@@ -3,6 +3,7 @@ package dev.aungkyawpaing.loki.adapter
 import com.squareup.moshi.JsonDataException
 import dev.aungkyawpaing.loki.getJsonAdapter
 import dev.aungkyawpaing.loki.model.Text
+import dev.aungkyawpaing.loki.model.metadata.ElementStyle
 import dev.aungkyawpaing.loki.model.metadata.TextStyle
 import org.junit.jupiter.api.Assertions
 import org.junit.jupiter.api.DisplayName
@@ -34,7 +35,35 @@ class TextJsonAdapterTest {
                 textStyle = TextStyle(
                     textSize = 12,
                     isBold = true,
-                )
+                ),
+                style = null
+            )
+
+            val actual = adapter.fromJson(json)
+
+            Assertions.assertEquals(expected, actual)
+        }
+
+        @Test
+        fun `parse style if it exists`() {
+            val json = """
+            {
+              "type": "Text",
+              "text": "Some Text",
+              "textStyle": {
+                "textSize": 12,
+                "isBold": true
+              },
+              "style": {}
+            }
+        """.trimIndent()
+            val expected = Text(
+                text = "Some Text",
+                textStyle = TextStyle(
+                    textSize = 12,
+                    isBold = true,
+                ),
+                style = ElementStyle()
             )
 
             val actual = adapter.fromJson(json)
@@ -93,7 +122,8 @@ class TextJsonAdapterTest {
                 textStyle = TextStyle(
                     textSize = 12,
                     isBold = true,
-                )
+                ),
+                style = null
             )
 
             val expectedJson = """
@@ -111,7 +141,6 @@ class TextJsonAdapterTest {
 
             JSONAssert.assertEquals(expectedJson, actual, false)
         }
-
     }
 
 }

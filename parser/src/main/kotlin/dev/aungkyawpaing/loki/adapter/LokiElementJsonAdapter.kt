@@ -3,20 +3,20 @@ package dev.aungkyawpaing.loki.adapter
 import com.squareup.moshi.JsonAdapter
 import com.squareup.moshi.JsonReader
 import com.squareup.moshi.JsonWriter
-import dev.aungkyawpaing.loki.model.LokiElement
+import dev.aungkyawpaing.loki.model.AbstractElement
 import dev.aungkyawpaing.loki.model.LokiElementType
 import dev.aungkyawpaing.loki.model.Text
 
 class LokiElementJsonAdapter(
     private val textJsonAdapter: JsonAdapter<Text>,
-) : JsonAdapter<LokiElement>() {
+) : JsonAdapter<AbstractElement>() {
 
     companion object {
         private const val KEY_TYPE = "type"
     }
 
-    override fun fromJson(reader: JsonReader): LokiElement? {
-        var element: LokiElement? = null
+    override fun fromJson(reader: JsonReader): AbstractElement? {
+        var element: AbstractElement? = null
 
         while (reader.hasNext()) {
             val jsonValueMap = reader.readJsonValue() as Map<*, *>
@@ -26,7 +26,10 @@ class LokiElementJsonAdapter(
                 LokiElementType.TEXT -> {
                     element = textJsonAdapter.fromJsonValue(jsonValueMap)
                 }
-                else -> {
+                LokiElementType.Element -> {
+
+                }
+                null -> {
                     throw IllegalArgumentException("Illegal type: $typeString found. Refer to Loki spec")
                 }
             }
@@ -35,7 +38,7 @@ class LokiElementJsonAdapter(
         return element
     }
 
-    override fun toJson(writer: JsonWriter, value: LokiElement?) {
+    override fun toJson(writer: JsonWriter, value: AbstractElement?) {
         if (value == null) {
             writer.nullValue()
         } else {
@@ -43,6 +46,7 @@ class LokiElementJsonAdapter(
                 LokiElementType.TEXT -> {
                     textJsonAdapter.toJson(writer, value as Text)
                 }
+                LokiElementType.Element -> TODO()
             }
         }
     }

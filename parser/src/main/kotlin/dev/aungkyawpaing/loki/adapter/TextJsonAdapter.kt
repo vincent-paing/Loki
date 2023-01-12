@@ -6,22 +6,26 @@ import com.squareup.moshi.JsonReader
 import com.squareup.moshi.JsonWriter
 import dev.aungkyawpaing.loki.model.LokiElementType
 import dev.aungkyawpaing.loki.model.Text
+import dev.aungkyawpaing.loki.model.metadata.ElementStyle
 import dev.aungkyawpaing.loki.model.metadata.TextStyle
 
 class TextJsonAdapter constructor(
-    private val textStyleJsonAdapter: JsonAdapter<TextStyle>
+    private val textStyleJsonAdapter: JsonAdapter<TextStyle>,
+    private val styleJsonAdapter: JsonAdapter<ElementStyle>,
 ) : JsonAdapter<Text>() {
 
     companion object {
         private const val KEY_TYPE = "type"
         private const val KEY_TEXT = "text"
         private const val KEY_TEXT_STYLE = "textStyle"
-        private val KEY_OPTIONS = JsonReader.Options.of(KEY_TEXT, KEY_TEXT_STYLE)
+        private const val KEY_STYLE = "style"
+        private val KEY_OPTIONS = JsonReader.Options.of(KEY_TEXT, KEY_TEXT_STYLE, KEY_STYLE)
     }
 
     override fun fromJson(reader: JsonReader): Text {
         var text: String? = null
         var textStyle: TextStyle? = null
+        var style: ElementStyle? = null
 
         reader.beginObject()
         while (reader.hasNext()) {
@@ -31,6 +35,9 @@ class TextJsonAdapter constructor(
                 }
                 1 -> {
                     textStyle = textStyleJsonAdapter.fromJson(reader)
+                }
+                2 -> {
+                    style = styleJsonAdapter.fromJson(reader)
                 }
                 else -> {
                     reader.skipName()
@@ -51,7 +58,8 @@ class TextJsonAdapter constructor(
 
         return Text(
             text = text,
-            textStyle = textStyle
+            textStyle = textStyle,
+            style = style
         )
     }
 
@@ -68,6 +76,9 @@ class TextJsonAdapter constructor(
 
             writer.name(KEY_TEXT_STYLE) // "textStyle":
             textStyleJsonAdapter.toJson(writer, value.textStyle)
+
+            writer.name(KEY_STYLE)
+            styleJsonAdapter.toJson(writer, value.style)
 
             writer.endObject() // }
         }

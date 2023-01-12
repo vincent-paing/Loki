@@ -8,7 +8,7 @@ import io.mockk.mockk
 import io.mockk.verify
 import org.junit.jupiter.api.*
 
-class LokiElementJsonAdapterTest {
+class AbstractElementJsonAdapterTest {
 
     val textJsonAdapter = mockk<TextJsonAdapter>(relaxed = true)
     val adapter = LokiElementJsonAdapter(textJsonAdapter)
@@ -18,7 +18,8 @@ class LokiElementJsonAdapterTest {
         textStyle = TextStyle(
             textSize = 12,
             isBold = true,
-        )
+        ),
+        style = null
     )
 
     @BeforeEach

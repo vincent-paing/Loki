@@ -1,6 +1,7 @@
 package dev.aungkyawpaing.loki.model
 
 enum class LokiElementType(val typeString: String) {
+    Element("Element"),
     TEXT("Text");
 
     companion object {

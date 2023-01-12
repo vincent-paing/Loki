@@ -8,7 +8,7 @@ import dev.aungkyawpaing.loki.adapter.metadata.ElementStyleJsonAdapter
 import dev.aungkyawpaing.loki.adapter.metadata.PaddingJsonAdapter
 import dev.aungkyawpaing.loki.adapter.metadata.TextStyleJsonAdapter
 import dev.aungkyawpaing.loki.adapter.metadata.LengthJsonAdapter
-import dev.aungkyawpaing.loki.model.LokiElement
+import dev.aungkyawpaing.loki.model.AbstractElement
 import dev.aungkyawpaing.loki.model.Text
 import dev.aungkyawpaing.loki.model.metadata.ElementStyle
 import dev.aungkyawpaing.loki.model.metadata.Padding
@@ -20,13 +20,16 @@ class LokiJsonAdapterFactory : JsonAdapter.Factory {
 
     override fun create(type: Type, annotations: MutableSet<out Annotation>, moshi: Moshi): JsonAdapter<*>? {
         return when (type) {
-            LokiElement::class.java -> {
+            AbstractElement::class.java -> {
                 LokiElementJsonAdapter(
                     moshi.adapter(Text::class.java)
                 )
             }
             Text::class.java -> {
-                TextJsonAdapter(moshi.adapter(TextStyle::class.java))
+                TextJsonAdapter(
+                    moshi.adapter(TextStyle::class.java),
+                    moshi.adapter(ElementStyle::class.java)
+                )
             }
             TextStyle::class.java -> {
                 TextStyleJsonAdapter()
