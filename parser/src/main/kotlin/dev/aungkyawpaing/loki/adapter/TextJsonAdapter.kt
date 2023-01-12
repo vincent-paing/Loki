@@ -6,7 +6,7 @@ import com.squareup.moshi.JsonReader
 import com.squareup.moshi.JsonWriter
 import dev.aungkyawpaing.loki.model.LokiElementType
 import dev.aungkyawpaing.loki.model.Text
-import dev.aungkyawpaing.loki.model.TextStyle
+import dev.aungkyawpaing.loki.model.metadata.TextStyle
 
 class TextJsonAdapter constructor(
     private val textStyleJsonAdapter: JsonAdapter<TextStyle>

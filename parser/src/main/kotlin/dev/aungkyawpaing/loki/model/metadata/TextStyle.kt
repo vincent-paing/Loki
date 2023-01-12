@@ -1,4 +1,4 @@
-package dev.aungkyawpaing.loki.model
+package dev.aungkyawpaing.loki.model.metadata
 
 data class TextStyle(
     val textSize: Int,

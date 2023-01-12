@@ -1,10 +1,10 @@
-package dev.aungkyawpaing.loki.adapter
+package dev.aungkyawpaing.loki.adapter.metadata
 
 import com.squareup.moshi.JsonAdapter
 import com.squareup.moshi.JsonDataException
 import com.squareup.moshi.JsonReader
 import com.squareup.moshi.JsonWriter
-import dev.aungkyawpaing.loki.model.TextStyle
+import dev.aungkyawpaing.loki.model.metadata.TextStyle
 import java.io.IOException
 
 class TextStyleJsonAdapter : JsonAdapter<TextStyle>() {

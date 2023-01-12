@@ -2,7 +2,7 @@ package dev.aungkyawpaing.loki.adapter
 
 import com.squareup.moshi.JsonWriter
 import dev.aungkyawpaing.loki.model.Text
-import dev.aungkyawpaing.loki.model.TextStyle
+import dev.aungkyawpaing.loki.model.metadata.TextStyle
 import io.mockk.every
 import io.mockk.mockk
 import io.mockk.verify

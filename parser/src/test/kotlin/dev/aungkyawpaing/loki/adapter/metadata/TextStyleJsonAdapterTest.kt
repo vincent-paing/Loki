@@ -1,8 +1,8 @@
-package dev.aungkyawpaing.loki.adapter
+package dev.aungkyawpaing.loki.adapter.metadata
 
 import com.squareup.moshi.JsonDataException
 import dev.aungkyawpaing.loki.getJsonAdapter
-import dev.aungkyawpaing.loki.model.TextStyle
+import dev.aungkyawpaing.loki.model.metadata.TextStyle
 import org.junit.jupiter.api.Assertions
 import org.junit.jupiter.api.DisplayName
 import org.junit.jupiter.api.Nested
