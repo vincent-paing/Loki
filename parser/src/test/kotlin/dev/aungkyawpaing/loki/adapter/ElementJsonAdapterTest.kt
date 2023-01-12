@@ -1,6 +1,7 @@
 package dev.aungkyawpaing.loki.adapter
 
 import com.squareup.moshi.JsonWriter
+import dev.aungkyawpaing.loki.model.Image
 import dev.aungkyawpaing.loki.model.Text
 import dev.aungkyawpaing.loki.model.metadata.TextStyle
 import io.mockk.every
@@ -8,23 +9,27 @@ import io.mockk.mockk
 import io.mockk.verify
 import org.junit.jupiter.api.*
 
-class AbstractElementJsonAdapterTest {
+class ElementJsonAdapterTest {
 
     val textJsonAdapter = mockk<TextJsonAdapter>(relaxed = true)
-    val adapter = LokiElementJsonAdapter(textJsonAdapter)
+    val imageJsonAdapter = mockk<ImageJsonAdapter>(relaxed = true)
+    val adapter = ElementJsonAdapter(textJsonAdapter, imageJsonAdapter)
 
     val text = Text(
-        text = "Some Text",
-        textStyle = TextStyle(
-            textSize = 12,
-            isBold = true,
-        ),
+        text = "",
+        textStyle = TextStyle(textSize = 0, isBold = false),
+        style = null
+    )
+    val image = Image(
+        url = "",
+        altText = null,
         style = null
     )
 
     @BeforeEach
     fun setUp() {
         every { textJsonAdapter.fromJsonValue(any()) } returns text
+        every { imageJsonAdapter.fromJsonValue(any()) } returns image
     }
 
     @Nested
@@ -34,13 +39,26 @@ class AbstractElementJsonAdapterTest {
         fun `reads Text given a text element`() {
             val json = """
             {
-              "type": "text"
+              "type": "Text"
             }
         """.trimIndent()
 
             val actual = adapter.fromJson(json)
 
             Assertions.assertEquals(text, actual)
+        }
+
+        @Test
+        fun `reads Image given an image element`() {
+            val json = """
+            {
+              "type": "Image"
+            }
+        """.trimIndent()
+
+            val actual = adapter.fromJson(json)
+
+            Assertions.assertEquals(image, actual)
         }
 
     }
@@ -55,6 +73,15 @@ class AbstractElementJsonAdapterTest {
 
             verify {
                 textJsonAdapter.toJson(any<JsonWriter>(), any())
+            }
+        }
+
+        @Test
+        fun `write an image element given Image`() {
+            adapter.toJson(image)
+
+            verify {
+                imageJsonAdapter.toJson(any<JsonWriter>(), any())
             }
         }
     }

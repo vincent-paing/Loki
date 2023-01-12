@@ -1,14 +1,3 @@
-## Element Types
-
-- Element
-- Text
-- Image
-- Button
-- Row
-- Column
-- Card
-- LazyList
-
 ## Element
 
 An element represents a peiece of UI information. In Loki, every object is an element which always has type that efines
@@ -18,6 +7,17 @@ what type of the element it is.
 |------------|---------------------------|-------------|-----------|
 | type       | type of the element       | ElementType | YES       |
 | style      | view style of the element | ViewStyle   | NO        |
+
+## Element Types
+- Text
+- Image
+- Button
+- Box
+- Row
+- Column
+- Card
+- LazyList
+
 
 ## Text
 
@@ -45,6 +45,14 @@ A button represents an element that can be clicked.
 |------------|----------------------|-----------|-----------|
 | text       | Text to be rendered  | string    | YES       |
 | textStyle  | Styling for the text | TextStyle | YES       |
+
+## Box
+
+An element container used for styling purpose
+
+| Properties | Description          | Type    | Required? | 
+|------------|----------------------|---------|-----------|
+| child      | child to be rendered | Element | NO        |
 
 ## Row
 
