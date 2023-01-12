@@ -21,7 +21,7 @@ class TextJsonAdapterTest {
         fun `parse text correctly`() {
             val json = """
             {
-              "type": "text",
+              "type": "Text",
               "text": "Some Text",
               "textStyle": {
                 "textSize": 12,
@@ -46,7 +46,7 @@ class TextJsonAdapterTest {
         fun `throws error when text is missing`() {
             val json = """
             {
-              "type": "text",
+              "type": "Text",
               "textStyle": {
                 "textSize": 12,
                 "isBold": true
@@ -98,7 +98,7 @@ class TextJsonAdapterTest {
 
             val expectedJson = """
             {
-              "type": "text",
+              "type": "Text",
               "text": "Some Text",
               "textStyle": {
                 "textSize": 12,
