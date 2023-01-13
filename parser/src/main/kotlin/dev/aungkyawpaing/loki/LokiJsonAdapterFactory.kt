@@ -2,18 +2,12 @@ package dev.aungkyawpaing.loki
 
 import com.squareup.moshi.JsonAdapter
 import com.squareup.moshi.Moshi
-import dev.aungkyawpaing.loki.adapter.ImageJsonAdapter
-import dev.aungkyawpaing.loki.adapter.ElementJsonAdapter
-import dev.aungkyawpaing.loki.adapter.RowJsonAdapter
-import dev.aungkyawpaing.loki.adapter.TextJsonAdapter
+import dev.aungkyawpaing.loki.adapter.*
 import dev.aungkyawpaing.loki.adapter.metadata.ElementStyleJsonAdapter
 import dev.aungkyawpaing.loki.adapter.metadata.PaddingJsonAdapter
 import dev.aungkyawpaing.loki.adapter.metadata.TextStyleJsonAdapter
 import dev.aungkyawpaing.loki.adapter.metadata.LengthJsonAdapter
-import dev.aungkyawpaing.loki.model.Element
-import dev.aungkyawpaing.loki.model.Image
-import dev.aungkyawpaing.loki.model.Row
-import dev.aungkyawpaing.loki.model.Text
+import dev.aungkyawpaing.loki.model.*
 import dev.aungkyawpaing.loki.model.metadata.*
 import java.lang.reflect.Type
 
@@ -25,7 +19,8 @@ class LokiJsonAdapterFactory : JsonAdapter.Factory {
                 ElementJsonAdapter(
                     moshi.adapter(Text::class.java),
                     moshi.adapter(Image::class.java),
-                    moshi.adapter(Row::class.java)
+                    moshi.adapter(Row::class.java),
+                    moshi.adapter(Column::class.java)
                 )
             }
             Text::class.java -> {
@@ -43,6 +38,12 @@ class LokiJsonAdapterFactory : JsonAdapter.Factory {
             }
             Row::class.java -> {
                 RowJsonAdapter(
+                    moshi.adapter(Element::class.java),
+                    moshi.adapter(ElementStyle::class.java)
+                )
+            }
+            Column::class.java -> {
+                ColumnJsonAdapter(
                     moshi.adapter(Element::class.java),
                     moshi.adapter(ElementStyle::class.java)
                 )

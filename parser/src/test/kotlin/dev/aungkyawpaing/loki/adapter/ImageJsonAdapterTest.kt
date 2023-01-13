@@ -1,4 +1,4 @@
-package dev.aungkyawpaing.loki.adapter.metadata
+package dev.aungkyawpaing.loki.adapter
 
 import com.squareup.moshi.JsonDataException
 import dev.aungkyawpaing.loki.getJsonAdapter
