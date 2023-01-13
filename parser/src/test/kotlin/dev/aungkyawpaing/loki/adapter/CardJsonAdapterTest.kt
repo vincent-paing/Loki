@@ -4,7 +4,7 @@ import com.squareup.moshi.JsonDataException
 import dev.aungkyawpaing.loki.getJsonAdapter
 import dev.aungkyawpaing.loki.model.Text
 import dev.aungkyawpaing.loki.model.metadata.ElementStyle
-import dev.aungkyawpaing.loki.model.Column
+import dev.aungkyawpaing.loki.model.Card
 import dev.aungkyawpaing.loki.model.metadata.TextStyle
 import org.junit.jupiter.api.Assertions
 import org.junit.jupiter.api.DisplayName
@@ -12,18 +12,19 @@ import org.junit.jupiter.api.Nested
 import org.junit.jupiter.api.Test
 import org.skyscreamer.jsonassert.JSONAssert
 
-class ColumnJsonAdapterTest {
+class CardJsonAdapterTest {
 
-    private val adapter = getJsonAdapter<Column>()
+    private val adapter = getJsonAdapter<Card>()
 
     @Nested
     @DisplayName("fromJson")
     inner class FromJson {
         @Test
-        fun `parse column`() {
+        fun `parse card`() {
             val json = """
             {
-              "type": "Column",
+              "type": "Card",
+              "cornerRadius": 12,
               "children": [{
                 "type": "Text",
                 "text": "Some Text",
@@ -34,13 +35,16 @@ class ColumnJsonAdapterTest {
               }]
             }
         """.trimIndent()
-            val expected = Column(
+            val expected = Card(
+                cornerRadius = 12,
                 children = listOf(
                     Text(
-                        text = "Some Text", textStyle = TextStyle(
+                        text = "Some Text",
+                        textStyle = TextStyle(
                             textSize = 12,
                             isBold = true,
-                        ), style = null
+                        ),
+                        style = null
                     )
                 )
             )
@@ -54,13 +58,16 @@ class ColumnJsonAdapterTest {
         fun `parse style if it exists`() {
             val json = """
             {
-              "type": "Column",
+              "type": "Card",
+              "cornerRadius": 12,
               "children": [],
               "style": {}
             }
         """.trimIndent()
-            val expected = Column(
-                children = emptyList(), style = ElementStyle()
+            val expected = Card(
+                cornerRadius = 12,
+                children = emptyList(),
+                style = ElementStyle()
             )
 
             val actual = adapter.fromJson(json)
@@ -69,10 +76,25 @@ class ColumnJsonAdapterTest {
         }
 
         @Test
+        fun `set radius to 0 when cornerRadius is missing`() {
+            val json = """
+            {
+              "type": "Card",
+              "children": []
+            }
+        """.trimIndent()
+
+
+            val actual = adapter.fromJson(json)?.cornerRadius
+
+            Assertions.assertEquals(0, actual)
+        }
+
+        @Test
         fun `throws error when children is missing`() {
             val json = """
             {
-              "type": "Column"
+              "type": "Card"
             }
         """.trimIndent()
 
@@ -93,19 +115,23 @@ class ColumnJsonAdapterTest {
 
         @Test
         fun `write to json`() {
-            val column = Column(
+            val card = Card(
+                cornerRadius = 12,
                 children = listOf(
                     Text(
-                        text = "Some Text", textStyle = TextStyle(
+                        text = "Some Text",
+                        textStyle = TextStyle(
                             textSize = 12,
                             isBold = true,
-                        ), style = null
+                        ),
+                        style = null
                     )
                 )
             )
             val expected = """
             {
-              "type": "Column",
+              "type": "Card",
+              "cornerRadius": 12,
               "children": [{
                 "type": "Text",
                 "text": "Some Text",
@@ -117,7 +143,7 @@ class ColumnJsonAdapterTest {
             }
         """.trimIndent()
 
-            val actual = adapter.toJson(column)
+            val actual = adapter.toJson(card)
 
             JSONAssert.assertEquals(expected, actual, false)
         }

@@ -4,7 +4,8 @@ enum class LokiElementType(val typeString: String) {
     TEXT("Text"),
     IMAGE("Image"),
     ROW("Row"),
-    COLUMN("Column");
+    COLUMN("Column"),
+    Card("Card");
 
     companion object {
         fun fromTypeString(typeString: String?) = values().find { it.typeString == typeString }

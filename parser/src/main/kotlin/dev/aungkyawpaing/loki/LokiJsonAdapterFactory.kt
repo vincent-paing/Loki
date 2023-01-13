@@ -20,7 +20,8 @@ class LokiJsonAdapterFactory : JsonAdapter.Factory {
                     moshi.adapter(Text::class.java),
                     moshi.adapter(Image::class.java),
                     moshi.adapter(Row::class.java),
-                    moshi.adapter(Column::class.java)
+                    moshi.adapter(Column::class.java),
+                    moshi.adapter(Card::class.java),
                 )
             }
             Text::class.java -> {
@@ -38,14 +39,17 @@ class LokiJsonAdapterFactory : JsonAdapter.Factory {
             }
             Row::class.java -> {
                 RowJsonAdapter(
-                    moshi.adapter(Element::class.java),
-                    moshi.adapter(ElementStyle::class.java)
+                    moshi.adapter(Element::class.java), moshi.adapter(ElementStyle::class.java)
                 )
             }
             Column::class.java -> {
                 ColumnJsonAdapter(
-                    moshi.adapter(Element::class.java),
-                    moshi.adapter(ElementStyle::class.java)
+                    moshi.adapter(Element::class.java), moshi.adapter(ElementStyle::class.java)
+                )
+            }
+            Card::class.java -> {
+                CardJsonAdapter(
+                    moshi.adapter(Element::class.java), moshi.adapter(ElementStyle::class.java)
                 )
             }
             Padding::class.java -> {

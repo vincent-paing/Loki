@@ -10,6 +10,7 @@ class ElementJsonAdapter(
     private val imageJsonAdapter: JsonAdapter<Image>,
     private val rowJsonAdapter: JsonAdapter<Row>,
     private val columnJsonAdapter: JsonAdapter<Column>,
+    private val cardJsonAdapter: JsonAdapter<Card>,
 ) : JsonAdapter<Element>() {
 
     companion object {
@@ -35,6 +36,9 @@ class ElementJsonAdapter(
                 }
                 LokiElementType.COLUMN -> {
                     element = columnJsonAdapter.fromJsonValue(jsonValueMap)
+                }
+                LokiElementType.Card -> {
+                    element = cardJsonAdapter.fromJsonValue(jsonValueMap)
                 }
                 null -> {
                     throw IllegalArgumentException("Illegal type: $typeString found. Refer to Loki spec")
@@ -62,6 +66,10 @@ class ElementJsonAdapter(
                 LokiElementType.COLUMN -> {
                     columnJsonAdapter.toJson(writer, value as Column)
                 }
+                LokiElementType.Card -> {
+                    cardJsonAdapter.toJson(writer, value as Card)
+                }
+
             }
         }
     }

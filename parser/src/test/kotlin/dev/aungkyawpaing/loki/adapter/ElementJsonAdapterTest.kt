@@ -1,10 +1,7 @@
 package dev.aungkyawpaing.loki.adapter
 
 import com.squareup.moshi.JsonWriter
-import dev.aungkyawpaing.loki.model.Column
-import dev.aungkyawpaing.loki.model.Image
-import dev.aungkyawpaing.loki.model.Text
-import dev.aungkyawpaing.loki.model.Row
+import dev.aungkyawpaing.loki.model.*
 import dev.aungkyawpaing.loki.model.metadata.TextStyle
 import io.mockk.every
 import io.mockk.mockk
@@ -17,7 +14,9 @@ class ElementJsonAdapterTest {
     val imageJsonAdapter = mockk<ImageJsonAdapter>(relaxed = true)
     val rowJsonAdapter = mockk<RowJsonAdapter>(relaxed = true)
     val columnJsonAdapter = mockk<ColumnJsonAdapter>(relaxed = true)
-    val adapter = ElementJsonAdapter(textJsonAdapter, imageJsonAdapter, rowJsonAdapter, columnJsonAdapter)
+    val cardJsonAdapter = mockk<CardJsonAdapter>(relaxed = true)
+    val adapter =
+        ElementJsonAdapter(textJsonAdapter, imageJsonAdapter, rowJsonAdapter, columnJsonAdapter, cardJsonAdapter)
 
     val text = Text(
         text = "", textStyle = TextStyle(textSize = 0, isBold = false), style = null
@@ -31,6 +30,9 @@ class ElementJsonAdapterTest {
     val column = Column(
         children = emptyList(),
     )
+    val card = Card(
+        children = emptyList(),
+    )
 
     @BeforeEach
     fun setUp() {
@@ -38,6 +40,7 @@ class ElementJsonAdapterTest {
         every { imageJsonAdapter.fromJsonValue(any()) } returns image
         every { rowJsonAdapter.fromJsonValue(any()) } returns row
         every { columnJsonAdapter.fromJsonValue(any()) } returns column
+        every { cardJsonAdapter.fromJsonValue(any()) } returns card
     }
 
     @Nested
@@ -95,6 +98,19 @@ class ElementJsonAdapterTest {
             Assertions.assertEquals(column, actual)
         }
 
+        @Test
+        fun `reads Card given a card element`() {
+            val json = """
+            {
+              "type": "Card"
+            }
+        """.trimIndent()
+
+            val actual = adapter.fromJson(json)
+
+            Assertions.assertEquals(card, actual)
+        }
+
     }
 
     @Nested
@@ -134,6 +150,15 @@ class ElementJsonAdapterTest {
 
             verify {
                 columnJsonAdapter.toJson(any<JsonWriter>(), any())
+            }
+        }
+
+        @Test
+        fun `write a card element given Card`() {
+            adapter.toJson(card)
+
+            verify {
+                cardJsonAdapter.toJson(any<JsonWriter>(), any())
             }
         }
     }
