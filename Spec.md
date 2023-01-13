@@ -1,4 +1,4 @@
-## Element
+# Element
 
 An element represents a peiece of UI information. In Loki, every object is an element which always has type that efines
 what type of the element it is.
@@ -74,10 +74,10 @@ A layout element that arrange its child elements in a column/vertically
 
 A card represents a card used in material design
 
-| Properties        | Description                        | Type            | Required? |
-|-------------------|------------------------------------|-----------------|-----------|
-| roundCornerRadius | corner radius value, defaults to 0 | number          | NO        |
-| children          | children element to rendered       | list of Element | YES       |
+| Properties   | Description                        | Type            | Required? |
+|--------------|------------------------------------|-----------------|-----------|
+| cornerRadius | corner radius value, defaults to 0 | number          | NO        |
+| children     | children element to rendered       | list of Element | YES       |
 
 ## LazyList
 
@@ -86,11 +86,20 @@ A lazy list renders it child lazily
 | Properties  | Description                                    | Type                       | Required? |
 |-------------|------------------------------------------------|----------------------------|-----------|
 | orientation | deteremines how to order its children elements | 'horizontal' or 'vertical' | YES       |
-| children    | children element to rendered                   | list of Element            | YES       |
+| children    | children element to rendered                   | list of LazyElement        | YES       |
 
-## Element Metadatas
+### Lazy Element
 
-### Element Style
+Lazy element has an id that is unique so that frontends can use this key to diff list. The id would mostly be the id of the data you're presenting
+
+| Properties | Description                | Type    | Required? |
+|------------|----------------------------|---------|-----------|
+| id         | unique id for list diffing | string  | YES       |
+| element    | element to be rendered     | Element | YES       |
+
+# Element Metadatas
+
+## Element Style
 
 A common styling that can be used across all elements.
 
@@ -100,7 +109,7 @@ A common styling that can be used across all elements.
 | height     | height of the image, wrap the content by default | number OR 'max' | NO        |
 | padding    | Padding to be applied around the element         | Padding         | NO        |
 
-### Padding
+## Padding
 
 Spacing around an element
 
@@ -111,7 +120,7 @@ Spacing around an element
 | left       | left padding, defaults to 0   | number | NO        |
 | right      | right padding, defaults to 0  | number | NO        |
 
-### Text Style
+## Text Style
 
 Styling for element that requires a text to be rendered. The style is to be applied on the text and not on the element
 itself.
