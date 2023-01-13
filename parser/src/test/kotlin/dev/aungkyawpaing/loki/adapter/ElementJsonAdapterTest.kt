@@ -3,6 +3,7 @@ package dev.aungkyawpaing.loki.adapter
 import com.squareup.moshi.JsonWriter
 import dev.aungkyawpaing.loki.model.Image
 import dev.aungkyawpaing.loki.model.Text
+import dev.aungkyawpaing.loki.model.Row
 import dev.aungkyawpaing.loki.model.metadata.TextStyle
 import io.mockk.every
 import io.mockk.mockk
@@ -13,7 +14,8 @@ class ElementJsonAdapterTest {
 
     val textJsonAdapter = mockk<TextJsonAdapter>(relaxed = true)
     val imageJsonAdapter = mockk<ImageJsonAdapter>(relaxed = true)
-    val adapter = ElementJsonAdapter(textJsonAdapter, imageJsonAdapter)
+    val rowJsonAdapter = mockk<RowJsonAdapter>(relaxed = true)
+    val adapter = ElementJsonAdapter(textJsonAdapter, imageJsonAdapter, rowJsonAdapter)
 
     val text = Text(
         text = "",
@@ -25,11 +27,15 @@ class ElementJsonAdapterTest {
         altText = null,
         style = null
     )
+    val row = Row(
+        children = emptyList(),
+    )
 
     @BeforeEach
     fun setUp() {
         every { textJsonAdapter.fromJsonValue(any()) } returns text
         every { imageJsonAdapter.fromJsonValue(any()) } returns image
+        every { rowJsonAdapter.fromJsonValue(any()) } returns row
     }
 
     @Nested
@@ -61,6 +67,19 @@ class ElementJsonAdapterTest {
             Assertions.assertEquals(image, actual)
         }
 
+        @Test
+        fun `reads Row given an row element`() {
+            val json = """
+            {
+              "type": "Row"
+            }
+        """.trimIndent()
+
+            val actual = adapter.fromJson(json)
+
+            Assertions.assertEquals(row, actual)
+        }
+
     }
 
     @Nested
@@ -82,6 +101,15 @@ class ElementJsonAdapterTest {
 
             verify {
                 imageJsonAdapter.toJson(any<JsonWriter>(), any())
+            }
+        }
+
+        @Test
+        fun `write an row element given Row`() {
+            adapter.toJson(row)
+
+            verify {
+                rowJsonAdapter.toJson(any<JsonWriter>(), any())
             }
         }
     }

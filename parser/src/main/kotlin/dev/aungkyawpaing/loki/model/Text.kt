@@ -7,4 +7,4 @@ data class Text(
     val text: String,
     val textStyle: TextStyle,
     override val style: ElementStyle?,
-) : AbstractElement(LokiElementType.TEXT, style)
+) : Element(LokiElementType.TEXT, style)

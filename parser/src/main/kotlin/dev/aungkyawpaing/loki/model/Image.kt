@@ -6,4 +6,4 @@ data class Image(
     val url: String,
     val altText: String?,
     override val style: ElementStyle?,
-) : AbstractElement(LokiElementType.IMAGE, style)
+) : Element(LokiElementType.IMAGE, style)

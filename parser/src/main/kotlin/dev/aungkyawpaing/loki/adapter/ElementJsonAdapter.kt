@@ -3,22 +3,20 @@ package dev.aungkyawpaing.loki.adapter
 import com.squareup.moshi.JsonAdapter
 import com.squareup.moshi.JsonReader
 import com.squareup.moshi.JsonWriter
-import dev.aungkyawpaing.loki.model.AbstractElement
-import dev.aungkyawpaing.loki.model.Image
-import dev.aungkyawpaing.loki.model.LokiElementType
-import dev.aungkyawpaing.loki.model.Text
+import dev.aungkyawpaing.loki.model.*
 
 class ElementJsonAdapter(
     private val textJsonAdapter: JsonAdapter<Text>,
-    private val imageJsonAdapter: JsonAdapter<Image>
-) : JsonAdapter<AbstractElement>() {
+    private val imageJsonAdapter: JsonAdapter<Image>,
+    private val rowJsonAdapter: JsonAdapter<Row>,
+) : JsonAdapter<Element>() {
 
     companion object {
         private const val KEY_TYPE = "type"
     }
 
-    override fun fromJson(reader: JsonReader): AbstractElement? {
-        var element: AbstractElement? = null
+    override fun fromJson(reader: JsonReader): Element? {
+        var element: Element? = null
 
         while (reader.hasNext()) {
             val jsonValueMap = reader.readJsonValue() as Map<*, *>
@@ -31,6 +29,9 @@ class ElementJsonAdapter(
                 LokiElementType.IMAGE -> {
                     element = imageJsonAdapter.fromJsonValue(jsonValueMap)
                 }
+                LokiElementType.ROW -> {
+                    element = rowJsonAdapter.fromJsonValue(jsonValueMap)
+                }
                 null -> {
                     throw IllegalArgumentException("Illegal type: $typeString found. Refer to Loki spec")
                 }
@@ -40,7 +41,7 @@ class ElementJsonAdapter(
         return element
     }
 
-    override fun toJson(writer: JsonWriter, value: AbstractElement?) {
+    override fun toJson(writer: JsonWriter, value: Element?) {
         if (value == null) {
             writer.nullValue()
         } else {
@@ -50,6 +51,9 @@ class ElementJsonAdapter(
                 }
                 LokiElementType.IMAGE -> {
                     imageJsonAdapter.toJson(writer, value as Image)
+                }
+                LokiElementType.ROW -> {
+                    rowJsonAdapter.toJson(writer, value as Row)
                 }
             }
         }
