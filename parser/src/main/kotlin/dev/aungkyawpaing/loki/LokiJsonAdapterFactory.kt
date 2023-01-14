@@ -3,11 +3,11 @@ package dev.aungkyawpaing.loki
 import com.squareup.moshi.JsonAdapter
 import com.squareup.moshi.Moshi
 import dev.aungkyawpaing.loki.adapter.*
-import dev.aungkyawpaing.loki.adapter.metadata.ElementStyleJsonAdapter
-import dev.aungkyawpaing.loki.adapter.metadata.PaddingJsonAdapter
-import dev.aungkyawpaing.loki.adapter.metadata.TextStyleJsonAdapter
-import dev.aungkyawpaing.loki.adapter.metadata.LengthJsonAdapter
+import dev.aungkyawpaing.loki.adapter.metadata.*
 import dev.aungkyawpaing.loki.model.*
+import dev.aungkyawpaing.loki.model.lazylist.LazyElementJsonAdapter
+import dev.aungkyawpaing.loki.model.lazylist.LazyListJsonAdapter
+import dev.aungkyawpaing.loki.model.lazylist.OrientationJsonAdapter
 import dev.aungkyawpaing.loki.model.metadata.*
 import java.lang.reflect.Type
 
@@ -22,6 +22,7 @@ class LokiJsonAdapterFactory : JsonAdapter.Factory {
                     moshi.adapter(Row::class.java),
                     moshi.adapter(Column::class.java),
                     moshi.adapter(Card::class.java),
+                    moshi.adapter(LazyList::class.java)
                 )
             }
             Text::class.java -> {
@@ -51,6 +52,21 @@ class LokiJsonAdapterFactory : JsonAdapter.Factory {
                 CardJsonAdapter(
                     moshi.adapter(Element::class.java), moshi.adapter(ElementStyle::class.java)
                 )
+            }
+            LazyList::class.java -> {
+                LazyListJsonAdapter(
+                    moshi.adapter(Orientation::class.java),
+                    moshi.adapter(LazyElement::class.java),
+                    moshi.adapter(ElementStyle::class.java),
+                )
+            }
+            LazyElement::class.java -> {
+                LazyElementJsonAdapter(
+                    moshi.adapter(Element::class.java)
+                )
+            }
+            Orientation::class.java -> {
+                OrientationJsonAdapter()
             }
             Padding::class.java -> {
                 PaddingJsonAdapter()

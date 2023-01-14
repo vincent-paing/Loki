@@ -6,5 +6,5 @@ import dev.aungkyawpaing.loki.model.metadata.TextStyle
 data class Text(
     val text: String,
     val textStyle: TextStyle,
-    override val style: ElementStyle?,
+    override val style: ElementStyle? = null,
 ) : Element(LokiElementType.TEXT, style)

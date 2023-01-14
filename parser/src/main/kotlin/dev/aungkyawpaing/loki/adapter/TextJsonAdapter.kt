@@ -45,7 +45,6 @@ class TextJsonAdapter constructor(
                 }
             }
         }
-
         reader.endObject()
 
         if (text == null) {

@@ -2,6 +2,8 @@ package dev.aungkyawpaing.loki.adapter
 
 import com.squareup.moshi.JsonWriter
 import dev.aungkyawpaing.loki.model.*
+import dev.aungkyawpaing.loki.model.lazylist.LazyListJsonAdapter
+import dev.aungkyawpaing.loki.model.metadata.Orientation
 import dev.aungkyawpaing.loki.model.metadata.TextStyle
 import io.mockk.every
 import io.mockk.mockk
@@ -15,8 +17,16 @@ class ElementJsonAdapterTest {
     val rowJsonAdapter = mockk<RowJsonAdapter>(relaxed = true)
     val columnJsonAdapter = mockk<ColumnJsonAdapter>(relaxed = true)
     val cardJsonAdapter = mockk<CardJsonAdapter>(relaxed = true)
+    val lazyListJsonAdapter = mockk<LazyListJsonAdapter>(relaxed = true)
     val adapter =
-        ElementJsonAdapter(textJsonAdapter, imageJsonAdapter, rowJsonAdapter, columnJsonAdapter, cardJsonAdapter)
+        ElementJsonAdapter(
+            textJsonAdapter,
+            imageJsonAdapter,
+            rowJsonAdapter,
+            columnJsonAdapter,
+            cardJsonAdapter,
+            lazyListJsonAdapter
+        )
 
     val text = Text(
         text = "", textStyle = TextStyle(textSize = 0, isBold = false), style = null
@@ -33,6 +43,10 @@ class ElementJsonAdapterTest {
     val card = Card(
         children = emptyList(),
     )
+    val lazyList = LazyList(
+        orientation = Orientation.HORIZONTAL,
+        children = emptyList()
+    )
 
     @BeforeEach
     fun setUp() {
@@ -41,6 +55,7 @@ class ElementJsonAdapterTest {
         every { rowJsonAdapter.fromJsonValue(any()) } returns row
         every { columnJsonAdapter.fromJsonValue(any()) } returns column
         every { cardJsonAdapter.fromJsonValue(any()) } returns card
+        every { lazyListJsonAdapter.fromJsonValue(any()) } returns lazyList
     }
 
     @Nested
@@ -111,6 +126,19 @@ class ElementJsonAdapterTest {
             Assertions.assertEquals(card, actual)
         }
 
+        @Test
+        fun `reads LazyList given a lazy list element`() {
+            val json = """
+            {
+              "type": "LazyList"
+            }
+        """.trimIndent()
+
+            val actual = adapter.fromJson(json)
+
+            Assertions.assertEquals(lazyList, actual)
+        }
+
     }
 
     @Nested
@@ -159,6 +187,15 @@ class ElementJsonAdapterTest {
 
             verify {
                 cardJsonAdapter.toJson(any<JsonWriter>(), any())
+            }
+        }
+
+        @Test
+        fun `write a lazy list element given LazyList`() {
+            adapter.toJson(lazyList)
+
+            verify {
+                lazyListJsonAdapter.toJson(any<JsonWriter>(), any())
             }
         }
     }

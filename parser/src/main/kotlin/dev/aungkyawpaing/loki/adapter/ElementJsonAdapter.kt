@@ -11,6 +11,7 @@ class ElementJsonAdapter(
     private val rowJsonAdapter: JsonAdapter<Row>,
     private val columnJsonAdapter: JsonAdapter<Column>,
     private val cardJsonAdapter: JsonAdapter<Card>,
+    private val lazyListJsonAdapter: JsonAdapter<LazyList>
 ) : JsonAdapter<Element>() {
 
     companion object {
@@ -37,8 +38,11 @@ class ElementJsonAdapter(
                 LokiElementType.COLUMN -> {
                     element = columnJsonAdapter.fromJsonValue(jsonValueMap)
                 }
-                LokiElementType.Card -> {
+                LokiElementType.CARD -> {
                     element = cardJsonAdapter.fromJsonValue(jsonValueMap)
+                }
+                LokiElementType.LAZY_LIST -> {
+                    element = lazyListJsonAdapter.fromJsonValue(jsonValueMap)
                 }
                 null -> {
                     throw IllegalArgumentException("Illegal type: $typeString found. Refer to Loki spec")
@@ -66,10 +70,12 @@ class ElementJsonAdapter(
                 LokiElementType.COLUMN -> {
                     columnJsonAdapter.toJson(writer, value as Column)
                 }
-                LokiElementType.Card -> {
+                LokiElementType.CARD -> {
                     cardJsonAdapter.toJson(writer, value as Card)
                 }
-
+                LokiElementType.LAZY_LIST -> {
+                    lazyListJsonAdapter.toJson(writer, value as LazyList)
+                }
             }
         }
     }
