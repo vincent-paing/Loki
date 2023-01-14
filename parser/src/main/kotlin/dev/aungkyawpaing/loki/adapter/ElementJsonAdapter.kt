@@ -6,12 +6,14 @@ import com.squareup.moshi.JsonWriter
 import dev.aungkyawpaing.loki.model.*
 
 class ElementJsonAdapter(
+    private val buttonJsonAdapter: JsonAdapter<Button>,
     private val textJsonAdapter: JsonAdapter<Text>,
     private val imageJsonAdapter: JsonAdapter<Image>,
     private val rowJsonAdapter: JsonAdapter<Row>,
     private val columnJsonAdapter: JsonAdapter<Column>,
     private val cardJsonAdapter: JsonAdapter<Card>,
-    private val lazyListJsonAdapter: JsonAdapter<LazyList>
+    private val lazyListJsonAdapter: JsonAdapter<LazyList>,
+    private val lazyGridJsonAdapter: JsonAdapter<LazyGrid>
 ) : JsonAdapter<Element>() {
 
     companion object {
@@ -26,6 +28,9 @@ class ElementJsonAdapter(
             val typeString = jsonValueMap[KEY_TYPE] as String
 
             when (LokiElementType.fromTypeString(typeString)) {
+                LokiElementType.Button-> {
+                    element = buttonJsonAdapter.fromJsonValue(jsonValueMap)
+                }
                 LokiElementType.TEXT -> {
                     element = textJsonAdapter.fromJsonValue(jsonValueMap)
                 }
@@ -44,6 +49,9 @@ class ElementJsonAdapter(
                 LokiElementType.LAZY_LIST -> {
                     element = lazyListJsonAdapter.fromJsonValue(jsonValueMap)
                 }
+                LokiElementType.LAZY_GRID -> {
+                    element = lazyGridJsonAdapter.fromJsonValue(jsonValueMap)
+                }
                 null -> {
                     throw IllegalArgumentException("Illegal type: $typeString found. Refer to Loki spec")
                 }
@@ -58,6 +66,9 @@ class ElementJsonAdapter(
             writer.nullValue()
         } else {
             when (value.type) {
+                LokiElementType.Button-> {
+                    buttonJsonAdapter.toJson(writer, value as Button)
+                }
                 LokiElementType.TEXT -> {
                     textJsonAdapter.toJson(writer, value as Text)
                 }
@@ -75,6 +86,9 @@ class ElementJsonAdapter(
                 }
                 LokiElementType.LAZY_LIST -> {
                     lazyListJsonAdapter.toJson(writer, value as LazyList)
+                }
+                LokiElementType.LAZY_GRID -> {
+                    lazyGridJsonAdapter.toJson(writer, value as LazyGrid)
                 }
             }
         }

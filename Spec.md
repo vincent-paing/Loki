@@ -3,10 +3,11 @@
 An element represents a peiece of UI information. In Loki, every object is an element which always has type that efines
 what type of the element it is.
 
-| Properties | Description               | Type        | Required? | 
-|------------|---------------------------|-------------|-----------|
-| type       | type of the element       | ElementType | YES       |
-| style      | view style of the element | ViewStyle   | NO        |
+| Properties   | Description                      | Type               | Required? | 
+|--------------|----------------------------------|--------------------|-----------|
+| type         | type of the element              | ElementType        | YES       |
+| style        | view style of the element        | ViewStyle          | NO        |
+| interactions | See Element interactions section | ElementInteraction | NO        |
 
 ## Element Types
 - Text
@@ -17,16 +18,16 @@ what type of the element it is.
 - Column
 - Card
 - LazyList
-
+- LazyGrid
 
 ## Text
 
 Text represents a textual information
 
-| Properties | Description          | Type      | Required? | 
-|------------|----------------------|-----------|-----------|
-| text       | Text to be rendered  | string    | YES       |
-| textStyle  | Styling for the text | TextStyle | YES       |
+| Properties | Description         | Type      | Required? | 
+|------------|---------------------|-----------|-----------|
+| text       | Text to be rendered | string    | YES       |
+| textStyle  | Styling or the text | TextStyle | YES       |
 
 ## Image
 
@@ -41,10 +42,12 @@ An image represents a picture.
 
 A button represents an element that can be clicked.
 
-| Properties | Description          | Type      | Required? | 
-|------------|----------------------|-----------|-----------|
-| text       | Text to be rendered  | string    | YES       |
-| textStyle  | Styling for the text | TextStyle | YES       |
+| Properties  | Description                                           | Type                             | Required? | 
+|-------------|-------------------------------------------------------|----------------------------------|-----------|
+| text        | Text to be rendered                                   | string                           | YES       |
+| textStyle   | Styling for the text                                  | TextStyle                        | YES       |
+| buttonStyle | Define what style the button to be used               | 'filled' or 'outlined' or 'text' | YES       |
+| color       | Color used by button to render outline and background | Color HEX String                 | YES       |
 
 ## Box
 
@@ -74,19 +77,19 @@ A layout element that arrange its child elements in a column/vertically
 
 A card represents a card used in material design
 
-| Properties   | Description                        | Type            | Required? |
-|--------------|------------------------------------|-----------------|-----------|
-| cornerRadius | corner radius value, defaults to 0 | number          | NO        |
-| children     | children element to rendered       | list of Element | YES       |
+| Properties   | Description                        | Type     | Required? |
+|--------------|------------------------------------|----------|-----------|
+| cornerRadius | corner radius value, defaults to 0 | number   | NO        |
+| child        | child element to rendered          | Element  | YES       |
 
 ## LazyList
 
 A lazy list renders it child lazily
 
-| Properties  | Description                                    | Type                       | Required? |
-|-------------|------------------------------------------------|----------------------------|-----------|
-| orientation | deteremines how to order its children elements | 'horizontal' or 'vertical' | YES       |
-| children    | children element to rendered                   | list of LazyElement        | YES       |
+| Properties  | Description                                    | Type                        | Required? |
+|-------------|------------------------------------------------|-----------------------------|-----------|
+| orientation | determines how to order its children elements  | 'horizontal' or 'vertical'  | YES       |
+| children    | children element to rendered                   | list of LazyElement         | YES       |
 
 ### Lazy Element
 
@@ -97,7 +100,17 @@ Lazy element has an id that is unique so that frontends can use this key to diff
 | id         | unique id for list diffing | string  | YES       |
 | element    | element to be rendered     | Element | YES       |
 
-# Element Metadatas
+## LazyGrid
+
+A lazy list renders it child lazily
+
+| Properties     | Description                                   | Type                        | Required? |
+|----------------|-----------------------------------------------|-----------------------------|-----------|
+| orientation    | determines how to order its children elements | 'horizontal' or 'vertical'  | YES       |
+| numOfRowColumn | total number of row or column                 | number                      | YES       |
+| children       | children element to rendered                  | list of LazyElement         | YES       |
+
+# Element Metadata
 
 ## Element Style
 
@@ -125,7 +138,37 @@ Spacing around an element
 Styling for element that requires a text to be rendered. The style is to be applied on the text and not on the element
 itself.
 
-| Properties | Description                          | Type     | Required? | 
-|------------|--------------------------------------|----------|-----------|
-| textSize   | Size of text                         | number   | YES       |
-| isBold     | Bold style or not, default to false  | boolean  | NO        |
+| Properties | Description                         | Type             | Required? | 
+|------------|-------------------------------------|------------------|-----------|
+| textSize   | Size of text                        | number           | YES       |
+| isBold     | Bold style or not, default to false | boolean          | NO        |
+| textColor  | Color of text                       | Color HEX String | NO        |
+
+# Element Interaction
+
+Interaction allows users to interact with the UI elements. This could behavior like clicks, swipe etc.
+
+
+| Properties | Description                   | Type               | Required? | 
+|------------|-------------------------------|--------------------|-----------|
+| onPress    | handler for press interaction | InteractionHandler | NO        |
+
+## InteractionHandler
+
+Different InteractionHandler can have different properties depending on type.
+
+| Properties | Description         | Type                   | Required? | 
+|------------|---------------------|------------------------|-----------|
+| type       | type of interaction | InteractionHandlerType | NO        |
+
+### InteractionHandlerType
+
+- Navigation
+
+## Navigation InteractionHandler
+
+Navigation tells the UI to navigate away from current page
+
+| Properties | Description                     | Type   | Required? | 
+|------------|---------------------------------|--------|-----------|
+| page       | Name of the page to navigate to | string | YES       |

@@ -1,0 +1,359 @@
+{
+  "type": "Column",
+  "style": {
+    "padding": {
+      "top": 16,
+      "bottom": 16,
+      "left": 16,
+      "right": 16
+    }
+  },
+  "children": [
+    {
+      "type": "Text",
+      "text": "Wander Air",
+      "textStyle": {
+        "textSize": 24,
+        "textColor": "#212121",
+        "isBold": true
+      }
+    },
+    {
+      "type": "Text",
+      "text": "Your Recent Searches",
+      "textStyle": {
+        "textSize": 20,
+        "isBold": true
+      },
+      "style": {
+        "padding": {
+          "top": 16
+        }
+      }
+    },
+    {
+      "type": "Column",
+      "style": {
+        "padding": {
+          "top": 16
+        }
+      },
+      "children": [
+        {
+          "type": "Text",
+          "text": "Singapore",
+          "textStyle": {
+            "textSize": 16,
+            "textColor": "#0B0B0B"
+          }
+        },
+        {
+          "type": "Text",
+          "text": "Oct 12 - Oct 14",
+          "textStyle": {
+            "textSize": 14,
+            "textColor": "#424242"
+          }
+        },
+        {
+          "type": "Text",
+          "text": "Round trip",
+          "textStyle": {
+            "textSize": 14,
+            "textColor": "#424242"
+          }
+        },
+        {
+          "type": "Text",
+          "text": "From THB 5000 ▲",
+          "textStyle": {
+            "textSize": 16,
+            "textColor": "#c71d0e",
+            "isBold": true
+          }
+        }
+      ]
+    },
+    {
+      "type": "Column",
+      "style": {
+        "padding": {
+          "top": 8
+        }
+      },
+      "children": [
+        {
+          "type": "Text",
+          "text": "Vietnam",
+          "textStyle": {
+            "isBold": true,
+            "textSize": 16,
+            "textColor": "#0B0B0B"
+          },
+          "style": {
+            "padding": {
+              "top": 8
+            }
+          }
+        },
+        {
+          "type": "Text",
+          "text": "May 20",
+          "textStyle": {
+            "textSize": 14,
+            "textColor": "#424242"
+          }
+        },
+        {
+          "type": "Text",
+          "text": "One way",
+          "textStyle": {
+            "textSize": 14,
+            "textColor": "#424242"
+          }
+        },
+        {
+          "type": "Text",
+          "text": "From THB 2000 ▼",
+          "textStyle": {
+            "textSize": 16,
+            "textColor": "#0eb029",
+            "isBold": true
+          }
+        }
+      ]
+    },
+    {
+      "type": "Column",
+      "style": {
+        "padding": {
+          "top": 8
+        }
+      },
+      "children": [
+        {
+          "type": "Text",
+          "text": "Burma",
+          "textStyle": {
+            "isBold": true,
+            "textSize": 16,
+            "textColor": "#0B0B0B"
+          }
+        },
+        {
+          "type": "Text",
+          "text": "April 12 - April 20",
+          "textStyle": {
+            "textSize": 14,
+            "textColor": "#424242"
+          }
+        },
+        {
+          "type": "Text",
+          "text": "Round trip",
+          "textStyle": {
+            "textSize": 14,
+            "textColor": "#424242"
+          }
+        },
+        {
+          "type": "Text",
+          "text": "From THB 1500 ▲",
+          "textStyle": {
+            "textSize": 16,
+            "textColor": "#c71d0e",
+            "isBold": true
+          }
+        }
+      ]
+    },
+    {
+      "type": "Button",
+      "text": "Search More Flights",
+      "buttonStyle": "outlined",
+      "color": "#0e29b0",
+      "textStyle": {
+        "textSize": 16,
+        "textColor": "#0e29b0"
+      },
+      "style": {
+        "width": "max",
+        "padding": {
+          "top": 8
+        }
+      }
+    },
+    {
+      "type": "Text",
+      "text": "News on Travel",
+      "textStyle": {
+        "textSize": 20,
+        "isBold": true
+      },
+      "style": {
+        "padding": {
+          "top": 16
+        }
+      }
+    },
+    {
+      "type": "Card",
+      "style": {
+        "width": "max",
+        "padding": {
+          "top": 16
+        }
+      },
+      "child": {
+        "type": "Column",
+        "children": [
+          {
+            "type": "Image",
+            "url": "https://i.imgur.com/Eyh4M2D.png",
+            "altText": "Lunar new year 50% Off Banner",
+            "style": {
+              "width": "max",
+              "height": 100
+            }
+          },
+          {
+            "type": "Text",
+            "text": "Chinese tourists visit Thailand’s beaches for first time in three years",
+            "textStyle": {
+              "textSize": 16
+            },
+            "style": {
+              "padding": {
+                "top": 8,
+                "left": 8,
+                "right": 8
+              }
+            }
+          },
+          {
+            "type": "Text",
+            "text": "Hitting the white sand beaches and eating mango sticky rice and seafood, Chinese tourists are returning to Thailand for their first trips abroad since China ended its strict COVID-19 ...",
+            "textStyle": {
+              "textSize": 14,
+              "textColor": "#747580"
+            },
+            "style": {
+              "padding": {
+                "top": 8,
+                "left": 8,
+                "right": 8,
+                "bottom": 8
+              }
+            }
+          }
+        ]
+      }
+    },
+    {
+      "type": "Card",
+      "style": {
+        "width": "max",
+        "padding": {
+          "top": 16
+        }
+      },
+      "child": {
+        "type": "Column",
+        "children": [
+          {
+            "type": "Image",
+            "url": "https://i.imgur.com/lx77NQo.png",
+            "altText": "Lunar new year 50% Off Banner",
+            "style": {
+              "width": "max",
+              "height": 100
+            }
+          },
+          {
+            "type": "Text",
+            "text": "China gives green light to Chinese tour groups",
+            "textStyle": {
+              "textSize": 16
+            },
+            "style": {
+              "padding": {
+                "top": 8,
+                "left": 8,
+                "right": 8
+              }
+            }
+          },
+          {
+            "type": "Text",
+            "text": "The Ministry of Culture and Tourism in China made the announcement yesterday. This move will officially allow tour agencies and online travel companies to begin booking large group tours. Before the Covid-19 pandemic large Chinese tour groups were ubiquitous in Thailand ...",
+            "textStyle": {
+              "textSize": 14,
+              "textColor": "#747580"
+            },
+            "style": {
+              "padding": {
+                "top": 8,
+                "left": 8,
+                "right": 8,
+                "bottom": 8
+              }
+            }
+          }
+        ]
+      }
+    },
+    {
+      "type": "Card",
+      "style": {
+        "width": "max",
+        "padding": {
+          "top": 16
+        }
+      },
+      "child": {
+        "type": "Column",
+        "children": [
+          {
+            "type": "Image",
+            "url": "https://i.imgur.com/vhZWqOX.png",
+            "altText": "Lunar new year 50% Off Banner",
+            "style": {
+              "width": "max",
+              "height": 100
+            }
+          },
+          {
+            "type": "Text",
+            "text": "Sydney ranked as second most popular travel spot in world by Airbnb",
+            "textStyle": {
+              "textSize": 16
+            },
+            "style": {
+              "padding": {
+                "top": 8,
+                "left": 8,
+                "right": 8
+              }
+            }
+          },
+          {
+            "type": "Text",
+            "text": "According to data released by Airbnb, Sydney is the second best travel destination in the world for 2023, with Melbourne following closely behind in third place and Auckland in fourth. Perth also made its debut on the list, coming in ninth...",
+            "textStyle": {
+              "textSize": 14,
+              "textColor": "#747580"
+            },
+            "style": {
+              "padding": {
+                "top": 8,
+                "left": 8,
+                "right": 8,
+                "bottom": 8
+              }
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

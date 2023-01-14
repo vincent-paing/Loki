@@ -1,6 +1,5 @@
 package dev.aungkyawpaing.loki.adapter.metadata
 
-import com.squareup.moshi.JsonDataException
 import dev.aungkyawpaing.loki.getJsonAdapter
 import dev.aungkyawpaing.loki.model.metadata.TextStyle
 import org.junit.jupiter.api.Assertions
@@ -23,12 +22,14 @@ class TextStyleJsonAdapterTest {
             val json = """
             {
               "textSize": 12,
-              "isBold": true
+              "isBold": true,
+              "textColor": "#FFFFFF"
             }
         """.trimIndent()
             val expected = TextStyle(
                 textSize = 12,
                 isBold = true,
+                textColor = "#FFFFFF"
             )
 
             val actual = adapter.fromJson(json)
@@ -45,27 +46,37 @@ class TextStyleJsonAdapterTest {
         """.trimIndent()
 
             val exception = Assertions.assertThrows(
-                JsonDataException::class.java
+                IllegalArgumentException::class.java
             ) { adapter.fromJson(json) }
 
 
-            Assertions.assertEquals(exception.message, "Required property textStyle is missing")
+            Assertions.assertEquals("Required property textStyle is missing", exception.message)
         }
 
         @Test
-        fun `throws error when isBold is missing`() {
+        fun `set isBold as null when it is missing`() {
             val json = """
             {
               "textSize": 12
             }
         """.trimIndent()
 
-            val exception = Assertions.assertThrows(
-                JsonDataException::class.java
-            ) { adapter.fromJson(json) }
+            val actual = adapter.fromJson(json)!!.isBold
 
+            Assertions.assertNull(actual)
+        }
 
-            Assertions.assertEquals(exception.message, "Required property isBold is missing")
+        @Test
+        fun `set textColor as null when it is missing`() {
+            val json = """
+            {
+              "textSize": 12
+            }
+        """.trimIndent()
+
+            val actual = adapter.fromJson(json)!!.textColor
+
+            Assertions.assertNull(actual)
         }
 
     }
@@ -80,12 +91,14 @@ class TextStyleJsonAdapterTest {
             val textStyle = TextStyle(
                 textSize = 12,
                 isBold = true,
+                textColor = "#FFFFFF"
             )
 
             val expectedJson = """
             {
               "textSize": 12,
-              "isBold": true
+              "isBold": true,
+              "textColor": "#FFFFFF"
             }
         """.trimIndent()
 

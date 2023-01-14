@@ -1,4 +1,4 @@
-package dev.aungkyawpaing.loki.adapter.lazylist
+package dev.aungkyawpaing.loki.adapter
 
 import dev.aungkyawpaing.loki.getJsonAdapter
 import dev.aungkyawpaing.loki.model.LazyElement
@@ -28,11 +28,23 @@ class LazyListJsonAdapterTest {
             {
               "type": "LazyList",
               "orientation": "horizontal",
-              "children": [{
+              "children": [
+              {
                 "id": "some-id",
                 "element": {
                   "type": "Text",
                   "text": "Some Text",
+                  "textStyle": {
+                    "textSize": 12,
+                    "isBold": true
+                  }
+                }
+              },
+              {
+                "id": "some-id-2",
+                "element": {
+                  "type": "Text",
+                  "text": "Some Text 2",
                   "textStyle": {
                     "textSize": 12,
                     "isBold": true
@@ -49,6 +61,16 @@ class LazyListJsonAdapterTest {
                         id = "some-id",
                         element = Text(
                             text = "Some Text",
+                            textStyle = TextStyle(
+                                textSize = 12,
+                                isBold = true
+                            ),
+                        )
+                    ),
+                    LazyElement(
+                        id = "some-id-2",
+                        element = Text(
+                            text = "Some Text 2",
                             textStyle = TextStyle(
                                 textSize = 12,
                                 isBold = true

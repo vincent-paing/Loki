@@ -1,6 +1,5 @@
 package dev.aungkyawpaing.loki.adapter
 
-import com.squareup.moshi.JsonDataException
 import dev.aungkyawpaing.loki.getJsonAdapter
 import dev.aungkyawpaing.loki.model.Image
 import dev.aungkyawpaing.loki.model.metadata.ElementStyle
@@ -65,11 +64,11 @@ class ImageJsonAdapterTest {
         """.trimIndent()
 
             val exception = Assertions.assertThrows(
-                JsonDataException::class.java
+                IllegalArgumentException::class.java
             ) { adapter.fromJson(json) }
 
 
-            Assertions.assertEquals(exception.message, "Required property url is missing")
+            Assertions.assertEquals("Required property url is missing", exception.message)
         }
 
         @Test

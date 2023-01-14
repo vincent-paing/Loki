@@ -1,6 +1,5 @@
 package dev.aungkyawpaing.loki.adapter
 
-import com.squareup.moshi.JsonDataException
 import dev.aungkyawpaing.loki.getJsonAdapter
 import dev.aungkyawpaing.loki.model.Text
 import dev.aungkyawpaing.loki.model.metadata.ElementStyle
@@ -25,27 +24,25 @@ class CardJsonAdapterTest {
             {
               "type": "Card",
               "cornerRadius": 12,
-              "children": [{
+              "child": {
                 "type": "Text",
                 "text": "Some Text",
                 "textStyle": {
                   "textSize": 12,
                   "isBold": true
                 }
-              }]
+              }
             }
         """.trimIndent()
             val expected = Card(
                 cornerRadius = 12,
-                children = listOf(
-                    Text(
-                        text = "Some Text",
-                        textStyle = TextStyle(
-                            textSize = 12,
-                            isBold = true,
-                        ),
-                        style = null
-                    )
+                child = Text(
+                    text = "Some Text",
+                    textStyle = TextStyle(
+                        textSize = 12,
+                        isBold = true,
+                    ),
+                    style = null
                 )
             )
 
@@ -60,13 +57,27 @@ class CardJsonAdapterTest {
             {
               "type": "Card",
               "cornerRadius": 12,
-              "children": [],
-              "style": {}
+              "style": {},
+              "child": {
+                "type": "Text",
+                "text": "Some Text",
+                "textStyle": {
+                  "textSize": 12,
+                  "isBold": true
+                }
+              }
             }
         """.trimIndent()
             val expected = Card(
                 cornerRadius = 12,
-                children = emptyList(),
+                child = Text(
+                    text = "Some Text",
+                    textStyle = TextStyle(
+                        textSize = 12,
+                        isBold = true,
+                    ),
+                    style = null
+                ),
                 style = ElementStyle()
             )
 
@@ -80,7 +91,14 @@ class CardJsonAdapterTest {
             val json = """
             {
               "type": "Card",
-              "children": []
+              "child": {
+                "type": "Text",
+                "text": "Some Text",
+                "textStyle": {
+                  "textSize": 12,
+                  "isBold": true
+                }
+              }
             }
         """.trimIndent()
 
@@ -91,7 +109,7 @@ class CardJsonAdapterTest {
         }
 
         @Test
-        fun `throws error when children is missing`() {
+        fun `throws error when child is missing`() {
             val json = """
             {
               "type": "Card"
@@ -99,11 +117,11 @@ class CardJsonAdapterTest {
         """.trimIndent()
 
             val exception = Assertions.assertThrows(
-                JsonDataException::class.java
+                IllegalArgumentException::class.java
             ) { adapter.fromJson(json) }
 
 
-            Assertions.assertEquals(exception.message, "Required property children is missing")
+            Assertions.assertEquals("Required property child is missing", exception.message)
         }
 
 
@@ -117,29 +135,27 @@ class CardJsonAdapterTest {
         fun `write to json`() {
             val card = Card(
                 cornerRadius = 12,
-                children = listOf(
-                    Text(
-                        text = "Some Text",
-                        textStyle = TextStyle(
-                            textSize = 12,
-                            isBold = true,
-                        ),
-                        style = null
-                    )
+                child = Text(
+                    text = "Some Text",
+                    textStyle = TextStyle(
+                        textSize = 12,
+                        isBold = true,
+                    ),
+                    style = null
                 )
             )
             val expected = """
             {
               "type": "Card",
               "cornerRadius": 12,
-              "children": [{
+              "child": {
                 "type": "Text",
                 "text": "Some Text",
                 "textStyle": {
                   "textSize": 12,
                   "isBold": true
                 }
-              }]
+              }
             }
         """.trimIndent()
 

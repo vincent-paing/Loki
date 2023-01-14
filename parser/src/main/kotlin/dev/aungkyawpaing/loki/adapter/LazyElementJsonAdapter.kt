@@ -1,4 +1,4 @@
-package dev.aungkyawpaing.loki.model.lazylist
+package dev.aungkyawpaing.loki.adapter
 
 import com.squareup.moshi.JsonAdapter
 import com.squareup.moshi.JsonReader

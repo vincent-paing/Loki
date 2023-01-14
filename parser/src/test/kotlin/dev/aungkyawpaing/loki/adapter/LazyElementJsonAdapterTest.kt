@@ -1,4 +1,4 @@
-package dev.aungkyawpaing.loki.adapter.lazylist
+package dev.aungkyawpaing.loki.adapter
 
 import dev.aungkyawpaing.loki.getJsonAdapter
 import dev.aungkyawpaing.loki.model.LazyElement

@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "413000683835",
+    "firebase_url": "https://loki-17f7d-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "loki-17f7d",
+    "storage_bucket": "loki-17f7d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:413000683835:android:73edb72aeceb6b29d3671e",
+        "android_client_info": {
+          "package_name": "com.example.loki.sample"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "413000683835-gfj1f3i0i56f24i52otg2b0da6hk3lka.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCPjxx05kcbcgwinas-JDc4aSVLiRqyuIQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "413000683835-gfj1f3i0i56f24i52otg2b0da6hk3lka.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,7 +1,6 @@
 package dev.aungkyawpaing.loki.adapter
 
 import com.squareup.moshi.JsonAdapter
-import com.squareup.moshi.JsonDataException
 import com.squareup.moshi.JsonReader
 import com.squareup.moshi.JsonWriter
 import dev.aungkyawpaing.loki.model.Element
@@ -35,9 +34,9 @@ class RowJsonAdapter(
                     if (children == null) children = mutableListOf()
                     reader.beginArray()
                     while (reader.hasNext()) {
-                        val element = elementJsonAdapter.fromJson(reader) ?: break
+                        val jsonValueMap = reader.readJsonValue() as Map<*, *>
+                        val element = elementJsonAdapter.fromJsonValue(jsonValueMap) ?: break
                         children.add(element)
-
                     }
                     reader.endArray()
                 }
@@ -54,7 +53,7 @@ class RowJsonAdapter(
         reader.endObject()
 
         if (children == null) {
-            throw JsonDataException("Required property children is missing")
+            throw IllegalArgumentException("Required property children is missing")
         }
 
         return Row(

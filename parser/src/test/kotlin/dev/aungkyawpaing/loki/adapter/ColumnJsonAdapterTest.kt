@@ -1,10 +1,10 @@
 package dev.aungkyawpaing.loki.adapter
 
-import com.squareup.moshi.JsonDataException
 import dev.aungkyawpaing.loki.getJsonAdapter
 import dev.aungkyawpaing.loki.model.Text
 import dev.aungkyawpaing.loki.model.metadata.ElementStyle
 import dev.aungkyawpaing.loki.model.Column
+import dev.aungkyawpaing.loki.model.interaction.ElementInteractions
 import dev.aungkyawpaing.loki.model.metadata.TextStyle
 import org.junit.jupiter.api.Assertions
 import org.junit.jupiter.api.DisplayName
@@ -24,23 +24,41 @@ class ColumnJsonAdapterTest {
             val json = """
             {
               "type": "Column",
-              "children": [{
-                "type": "Text",
-                "text": "Some Text",
-                "textStyle": {
-                  "textSize": 12,
-                  "isBold": true
+              "children": [
+                {
+                  "type": "Text",
+                  "text": "Some Text",
+                  "textStyle": {
+                    "textSize": 12,
+                    "isBold": true
+                  }
+                },
+                {
+                  "type": "Text",
+                  "text": "Some Text 2",
+                  "textStyle": {
+                    "textSize": 12,
+                    "isBold": true
+                  }
                 }
-              }]
+              ]
             }
         """.trimIndent()
             val expected = Column(
                 children = listOf(
                     Text(
-                        text = "Some Text", textStyle = TextStyle(
+                        text = "Some Text",
+                        textStyle = TextStyle(
                             textSize = 12,
                             isBold = true,
-                        ), style = null
+                        )
+                    ),
+                    Text(
+                        text = "Some Text 2",
+                        textStyle = TextStyle(
+                            textSize = 12,
+                            isBold = true,
+                        )
                     )
                 )
             )
@@ -69,6 +87,27 @@ class ColumnJsonAdapterTest {
         }
 
         @Test
+        fun `parse element interaction if it exists`() {
+            val json = """
+            {
+              "type": "Column",
+              "children": [],
+              "style": {},
+              "interactions": {}
+            }
+        """.trimIndent()
+            val expected = Column(
+                children = emptyList(),
+                style = ElementStyle(),
+                interactions = ElementInteractions()
+            )
+
+            val actual = adapter.fromJson(json)
+
+            Assertions.assertEquals(expected, actual)
+        }
+
+        @Test
         fun `throws error when children is missing`() {
             val json = """
             {
@@ -77,11 +116,11 @@ class ColumnJsonAdapterTest {
         """.trimIndent()
 
             val exception = Assertions.assertThrows(
-                JsonDataException::class.java
+                IllegalArgumentException::class.java
             ) { adapter.fromJson(json) }
 
 
-            Assertions.assertEquals(exception.message, "Required property children is missing")
+            Assertions.assertEquals("Required property children is missing", exception.message)
         }
 
 

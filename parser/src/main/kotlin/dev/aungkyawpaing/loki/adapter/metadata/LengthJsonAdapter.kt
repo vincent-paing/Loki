@@ -4,6 +4,8 @@ import com.squareup.moshi.JsonAdapter
 import com.squareup.moshi.JsonReader
 import com.squareup.moshi.JsonWriter
 import dev.aungkyawpaing.loki.model.metadata.Length
+import java.lang.IllegalArgumentException
+import kotlin.math.roundToInt
 
 class LengthJsonAdapter : JsonAdapter<Length>() {
     override fun fromJson(reader: JsonReader): Length? {
@@ -14,12 +16,15 @@ class LengthJsonAdapter : JsonAdapter<Length>() {
 
         val value = reader.nextString()
 
-        if (value.toIntOrNull() != null) {
-            return Length.Number(value.toInt())
+        if (value.toDoubleOrNull() != null) {
+            return Length.Number(value.toDoubleOrNull()!!.roundToInt())
         }
 
-        return Length.Max
+        if (value == "max") {
+            return Length.Max
+        }
 
+        throw IllegalArgumentException("Unknown length : ${value}. It must either be numeral or 'max'")
     }
 
     override fun toJson(writer: JsonWriter, value: Length?) {

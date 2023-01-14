@@ -1,7 +1,6 @@
 package dev.aungkyawpaing.loki.adapter
 
 import com.squareup.moshi.JsonAdapter
-import com.squareup.moshi.JsonDataException
 import com.squareup.moshi.JsonReader
 import com.squareup.moshi.JsonWriter
 import dev.aungkyawpaing.loki.model.LokiElementType
@@ -48,11 +47,11 @@ class TextJsonAdapter constructor(
         reader.endObject()
 
         if (text == null) {
-            throw JsonDataException("Required property text is missing")
+            throw IllegalArgumentException("Required property text is missing")
         }
 
         if (textStyle == null) {
-            throw JsonDataException("Required property textStyle is missing")
+            throw IllegalArgumentException("Required property textStyle is missing")
         }
 
         return Text(

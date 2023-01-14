@@ -1,0 +1,58 @@
+{
+  "type": "Column",
+  "children": [
+    {
+      "type": "Image",
+      "url": "https://i.imgur.com/mCZ9sYT.png",
+      "altText": "Rice terrace",
+      "style": {
+        "width": "max",
+        "height": 250
+      }
+    },
+    {
+      "type": "Column",
+      "style": {
+        "padding": {
+          "top": 16,
+          "bottom": 16,
+          "left": 16,
+          "right": 16
+        }
+      },
+      "children": [
+        {
+          "type": "Text",
+          "text": "Rice terrace Half Day Tour",
+          "textStyle": {
+            "textSize": 20,
+            "textColor": "#212121",
+            "isBold": true
+          }
+        },
+        {
+          "type": "Text",
+          "text": "Bali",
+          "textStyle": {
+            "textSize": 16,
+            "textColor": "#424242",
+            "isBold": false
+          }
+        },
+        {
+          "type": "Text",
+          "text": "A tour that takes you to the beautiful rice terraces in Bali. The tour typically includes a visit to the famous Jatiluwih rice terraces, which are UNESCO World Heritage Site and considered as the most beautiful rice terraces in Bali. You will have the opportunity to walk through the terraces and learn about traditional rice farming methods. The tour may also include visits to other rice terraces in the area and a traditional Balinese village. You may also have the opportunity to participate in a traditional cooking class and learn how to make traditional Balinese dishes using locally grown ingredients. Overall, the tour is a great way to experience the natural beauty of Bali and gain a deeper understanding of the island's culture and way of life.",
+          "textStyle": {
+            "textSize": 16,
+            "isBold": false
+          },
+          "style": {
+            "padding": {
+              "top": 8
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

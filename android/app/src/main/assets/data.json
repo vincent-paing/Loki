@@ -1,0 +1,602 @@
+{
+  "type": "Column",
+  "style": {
+    "padding": {
+      "top": 16,
+      "bottom": 16,
+      "left": 16,
+      "right": 16
+    }
+  },
+  "children": [
+    {
+      "type": "Text",
+      "text": "Hello, Wanderer",
+      "textStyle": {
+        "textSize": 24,
+        "textColor": "#212121",
+        "isBold": true
+      }
+    },
+    {
+      "type": "Text",
+      "text": "Happy Lunar New Year!",
+      "textStyle": {
+        "textSize": 20,
+        "textColor": "#3B3B3B"
+      }
+    },
+    {
+      "type": "Image",
+      "url": "https://i.imgur.com/OOZVXDX.png",
+      "altText": "Lunar new year 50% Off Banner",
+      "style": {
+        "padding": {
+          "top": 16
+        },
+        "width": "max",
+        "height": 200
+      }
+    },
+    {
+      "type": "Text",
+      "text": "Just For you",
+      "textStyle": {
+        "textSize": 18,
+        "isBold": true
+      },
+      "style": {
+        "padding": {
+          "top": 8,
+          "bottom": 8
+        }
+      }
+    },
+    {
+      "type": "LazyList",
+      "orientation": "horizontal",
+      "children": [
+        {
+          "id": "1",
+          "element": {
+            "type": "Column",
+            "style": {
+              "padding": {
+                "right": 16
+              }
+            },
+            "children": [
+              {
+                "type": "Image",
+                "url": "https://i.imgur.com/wlwy8vx.png",
+                "altText": "Blue temple",
+                "style": {
+                  "width": 150,
+                  "height": 200
+                }
+              },
+              {
+                "type": "Text",
+                "text": "Chiang Mai",
+                "textStyle": {
+                  "textSize": 12,
+                  "textColor": "#424242"
+                },
+                "style": {
+                  "padding": {
+                    "top": 8
+                  }
+                }
+              },
+              {
+                "type": "Text",
+                "text": "White Blue Temple",
+                "textStyle": {
+                  "textSize": 14,
+                  "textColor": "#0B0B0B"
+                }
+              },
+              {
+                "type": "Button",
+                "buttonStyle": "outlined",
+                "color": "#D9D9D9",
+                "text": "3̶0̶0̶0̶1500 ฿",
+                "textStyle": {
+                  "textColor": "#0B0B0B",
+                  "textSize": 14,
+                  "isBold": true
+                }
+              }
+            ]
+          }
+        },
+        {
+          "id": "2",
+          "element": {
+            "type": "Column",
+            "style": {
+              "padding": {
+                "right": 16
+              }
+            },
+            "children": [
+              {
+                "type": "Image",
+                "url": "https://i.imgur.com/WoIsx0j.png",
+                "altText": "A group of people on boat",
+                "style": {
+                  "width": 150,
+                  "height": 200
+                }
+              },
+              {
+                "type": "Text",
+                "text": "Kachanaburi",
+                "textStyle": {
+                  "textSize": 12,
+                  "textColor": "#424242"
+                },
+                "style": {
+                  "padding": {
+                    "top": 4
+                  }
+                }
+              },
+              {
+                "type": "Text",
+                "text": "Floating House",
+                "textStyle": {
+                  "textSize": 14,
+                  "textColor": "#0B0B0B"
+                }
+              },
+              {
+                "type": "Button",
+                "buttonStyle": "outlined",
+                "color": "#D9D9D9",
+                "text": "800 ฿",
+                "textStyle": {
+                  "textColor": "#0B0B0B",
+                  "textSize": 14,
+                  "isBold": true
+                }
+              }
+            ]
+          }
+        },
+        {
+          "id": "3",
+          "element": {
+            "type": "Column",
+            "style": {
+              "padding": {
+                "right": 16
+              }
+            },
+            "children": [
+              {
+                "type": "Image",
+                "url": "https://i.imgur.com/Y6YMEo1.png",
+                "altText": "A cat",
+                "style": {
+                  "width": 150,
+                  "height": 200
+                }
+              },
+              {
+                "type": "Text",
+                "text": "Samut Prakan",
+                "textStyle": {
+                  "textSize": 12,
+                  "textColor": "#424242"
+                },
+                "style": {
+                  "padding": {
+                    "top": 4
+                  }
+                }
+              },
+              {
+                "type": "Text",
+                "text": "Ancient City",
+                "textStyle": {
+                  "textSize": 14,
+                  "textColor": "#0B0B0B"
+                }
+              },
+              {
+                "type": "Button",
+                "buttonStyle": "outlined",
+                "color": "#D9D9D9",
+                "text": "1500 ฿",
+                "textStyle": {
+                  "textColor": "#0B0B0B",
+                  "textSize": 14,
+                  "isBold": true
+                }
+              }
+            ]
+          }
+        },
+        {
+          "id": "4",
+          "element": {
+            "type": "Column",
+            "style": {
+              "padding": {
+                "right": 16
+              }
+            },
+            "children": [
+              {
+                "type": "Image",
+                "url": "https://i.imgur.com/qi12ajl.png",
+                "altText": "A beach with boats docked and green rock besides",
+                "style": {
+                  "width": 150,
+                  "height": 200
+                }
+              },
+              {
+                "type": "Text",
+                "text": "Krabi",
+                "textStyle": {
+                  "textSize": 12,
+                  "textColor": "#424242"
+                },
+                "style": {
+                  "padding": {
+                    "top": 4
+                  }
+                }
+              },
+              {
+                "type": "Text",
+                "text": "Half Day Island Tour",
+                "textStyle": {
+                  "textSize": 14,
+                  "textColor": "#0B0B0B"
+                }
+              },
+              {
+                "type": "Button",
+                "buttonStyle": "outlined",
+                "color": "#D9D9D9",
+                "text": "3200 ฿",
+                "textStyle": {
+                  "textColor": "#0B0B0B",
+                  "textSize": 14,
+                  "isBold": true
+                }
+              }
+            ]
+          }
+        },
+        {
+          "id": "5",
+          "element": {
+            "type": "Column",
+            "children": [
+              {
+                "type": "Image",
+                "url": "https://i.imgur.com/tP4e7Ni.png",
+                "altText": "People and car on the street",
+                "style": {
+                  "width": 150,
+                  "height": 200
+                }
+              },
+              {
+                "type": "Text",
+                "text": "Bangkok",
+                "textStyle": {
+                  "textSize": 12,
+                  "textColor": "#424242"
+                },
+                "style": {
+                  "padding": {
+                    "top": 4
+                  }
+                }
+              },
+              {
+                "type": "Text",
+                "text": "China Town Food Tour",
+                "textStyle": {
+                  "textSize": 14,
+                  "textColor": "#0B0B0B"
+                }
+              },
+              {
+                "type": "Button",
+                "buttonStyle": "outlined",
+                "color": "#D9D9D9",
+                "text": "2500 ฿",
+                "textStyle": {
+                  "textColor": "#0B0B0B",
+                  "textSize": 14,
+                  "isBold": true
+                }
+              }
+            ]
+          }
+        }
+      ],
+      "style": {
+        "padding": {
+          "top": 8
+        }
+      }
+    },
+    {
+      "type": "Text",
+      "text": "Discover more",
+      "textStyle": {
+        "textSize": 18,
+        "isBold": true
+      },
+      "style": {
+        "padding": {
+          "top": 8,
+          "bottom": 8
+        }
+      }
+    },
+    {
+      "type": "LazyGrid",
+      "numOfRowColumn": 2,
+      "orientation": "vertical",
+      "style": {
+        "width": "max",
+        "height": 580,
+        "padding": {
+          "top": 8
+        }
+      },
+      "children": [
+        {
+          "id": "1",
+          "element": {
+            "type": "Column",
+            "style": {
+              "padding": {
+                "width": "max",
+                "bottom": 8,
+                "right": 8
+              }
+            },
+            "children": [
+              {
+                "type": "Image",
+                "url": "https://i.imgur.com/NDvfizJ.png",
+                "altText": "People on bridge held by a big hand made of rock",
+                "style": {
+                  "width": "max",
+                  "height": 200
+                }
+              },
+              {
+                "type": "Text",
+                "text": "Ba Na Hills",
+                "textStyle": {
+                  "textSize": 12,
+                  "textColor": "#424242"
+                },
+                "style": {
+                  "padding": {
+                    "top": 8
+                  }
+                }
+              },
+              {
+                "type": "Text",
+                "text": "Golden Bridge Half Day",
+                "textStyle": {
+                  "textSize": 14,
+                  "textColor": "#0B0B0B"
+                }
+              },
+              {
+                "type": "Button",
+                "buttonStyle": "outlined",
+                "color": "#D9D9D9",
+                "text": "2000 ฿",
+                "textStyle": {
+                  "textColor": "#0B0B0B",
+                  "textSize": 14,
+                  "isBold": true
+                }
+              }
+            ]
+          }
+        },
+        {
+          "id": "2",
+          "element": {
+            "type": "Column",
+            "style": {
+              "padding": {
+                "width": "max",
+                "bottom": 8,
+                "left": 8
+              }
+            },
+            "children": [
+              {
+                "type": "Image",
+                "url": "https://i.imgur.com/MmsrNcJ.png",
+                "altText": "Temples with hot air ballons",
+                "style": {
+                  "width": "max",
+                  "height": 200
+                }
+              },
+              {
+                "type": "Text",
+                "text": "Bagan",
+                "textStyle": {
+                  "textSize": 12,
+                  "textColor": "#424242"
+                },
+                "style": {
+                  "padding": {
+                    "top": 4
+                  }
+                }
+              },
+              {
+                "type": "Text",
+                "text": "Hot Air Ballon Sightseeing",
+                "textStyle": {
+                  "textSize": 14,
+                  "textColor": "#0B0B0B"
+                }
+              },
+              {
+                "type": "Button",
+                "buttonStyle": "outlined",
+                "color": "#D9D9D9",
+                "text": "1000 ฿",
+                "textStyle": {
+                  "textColor": "#0B0B0B",
+                  "textSize": 14,
+                  "isBold": true
+                }
+              }
+            ]
+          }
+        },
+        {
+          "id": "3",
+          "element": {
+            "type": "Column",
+            "style": {
+              "padding": {
+                "width": "max",
+                "right": 8
+              }
+            },
+            "children": [
+              {
+                "type": "Image",
+                "url": "https://i.imgur.com/xH57HOC.pngg",
+                "altText": "A forest",
+                "style": {
+                  "width": "max",
+                  "height": 200
+                }
+              },
+              {
+                "type": "Text",
+                "text": "Singapore",
+                "textStyle": {
+                  "textSize": 12,
+                  "textColor": "#424242"
+                },
+                "style": {
+                  "padding": {
+                    "top": 4
+                  }
+                }
+              },
+              {
+                "type": "Text",
+                "text": "Garden by the bay",
+                "textStyle": {
+                  "textSize": 14,
+                  "textColor": "#0B0B0B"
+                }
+              },
+              {
+                "type": "Button",
+                "buttonStyle": "outlined",
+                "color": "#D9D9D9",
+                "text": "1500 ฿",
+                "textStyle": {
+                  "textColor": "#0B0B0B",
+                  "textSize": 14,
+                  "isBold": true
+                }
+              }
+            ]
+          }
+        },
+        {
+          "id": "4",
+          "element": {
+            "type": "Column",
+            "style": {
+              "padding": {
+                "width": "max",
+                "left": 8
+              }
+            },
+            "interactions": {
+              "onPress": {
+                "type": "Navigation",
+                "page": "detail"
+              }
+            },
+            "children": [
+              {
+                "type": "Image",
+                "url": "https://i.imgur.com/MxigkkR.png",
+                "altText": "A rice terrace",
+                "style": {
+                  "width": "max",
+                  "height": 200
+                }
+              },
+              {
+                "type": "Text",
+                "text": "Bali",
+                "textStyle": {
+                  "textSize": 12,
+                  "textColor": "#424242"
+                },
+                "style": {
+                  "padding": {
+                    "top": 4
+                  }
+                }
+              },
+              {
+                "type": "Text",
+                "text": "Half Day Island Tour",
+                "textStyle": {
+                  "textSize": 14,
+                  "textColor": "#0B0B0B"
+                }
+              },
+              {
+                "type": "Button",
+                "buttonStyle": "outlined",
+                "color": "#D9D9D9",
+                "text": "5000 ฿",
+                "textStyle": {
+                  "textColor": "#0B0B0B",
+                  "textSize": 14,
+                  "isBold": true
+                }
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "type": "Button",
+      "buttonStyle": "text",
+      "color": "#FFFFFF",
+      "text": "SEE ALL",
+      "style": {
+        "width": "max"
+      },
+      "textStyle": {
+        "textColor": "#2071DA",
+        "textSize": 14,
+        "isBold": true
+      }
+    }
+  ]
+}

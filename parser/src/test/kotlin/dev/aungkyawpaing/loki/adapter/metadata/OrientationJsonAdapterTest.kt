@@ -1,6 +1,5 @@
-package dev.aungkyawpaing.loki.adapter.lazylist
+package dev.aungkyawpaing.loki.adapter.metadata
 
-import com.squareup.moshi.JsonDataException
 import dev.aungkyawpaing.loki.getJsonAdapter
 import dev.aungkyawpaing.loki.model.metadata.Orientation
 import org.junit.jupiter.api.Assertions
@@ -33,11 +32,11 @@ class OrientationJsonAdapterTest {
         @Test
         fun `throw error if it is neither 'horizontal' or 'vertical'`() {
             val exception = Assertions.assertThrows(
-                JsonDataException::class.java
+                IllegalArgumentException::class.java
             ) { adapter.fromJson("\"something-else\"") }
 
 
-            Assertions.assertEquals(exception.message, "Orientation must either be 'vertical' or 'horizontal'")
+            Assertions.assertEquals("Orientation must either be 'vertical' or 'horizontal'", exception.message)
         }
     }
 

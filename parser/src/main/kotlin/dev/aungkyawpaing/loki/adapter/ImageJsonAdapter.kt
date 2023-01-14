@@ -1,7 +1,6 @@
 package dev.aungkyawpaing.loki.adapter
 
 import com.squareup.moshi.JsonAdapter
-import com.squareup.moshi.JsonDataException
 import com.squareup.moshi.JsonReader
 import com.squareup.moshi.JsonWriter
 import dev.aungkyawpaing.loki.model.Image
@@ -46,7 +45,7 @@ class ImageJsonAdapter(
         reader.endObject()
 
         if (url == null) {
-            throw JsonDataException("Required property url is missing")
+            throw IllegalArgumentException("Required property url is missing")
         }
 
         return Image(

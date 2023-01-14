@@ -1,6 +1,5 @@
 package dev.aungkyawpaing.loki.adapter
 
-import com.squareup.moshi.JsonDataException
 import dev.aungkyawpaing.loki.getJsonAdapter
 import dev.aungkyawpaing.loki.model.Text
 import dev.aungkyawpaing.loki.model.metadata.ElementStyle
@@ -31,6 +30,14 @@ class RowJsonAdapterTest {
                   "textSize": 12,
                   "isBold": true
                 }
+              },
+              {
+                "type": "Text",
+                "text": "Some Text 2",
+                "textStyle": {
+                  "textSize": 12,
+                  "isBold": true
+                }
               }]
             }
         """.trimIndent()
@@ -41,6 +48,13 @@ class RowJsonAdapterTest {
                             textSize = 12,
                             isBold = true,
                         ), style = null
+                    ),
+                    Text(
+                        text = "Some Text 2",
+                        textStyle = TextStyle(
+                            textSize = 12,
+                            isBold = true,
+                        )
                     )
                 )
             )
@@ -77,11 +91,11 @@ class RowJsonAdapterTest {
         """.trimIndent()
 
             val exception = Assertions.assertThrows(
-                JsonDataException::class.java
+                IllegalArgumentException::class.java
             ) { adapter.fromJson(json) }
 
 
-            Assertions.assertEquals(exception.message, "Required property children is missing")
+            Assertions.assertEquals("Required property children is missing", exception.message)
         }
 
 

@@ -1,0 +1,508 @@
+{
+  "type": "Column",
+  "style": {
+    "padding": {
+      "top": 16,
+      "bottom": 16,
+      "left": 16,
+      "right": 16
+    }
+  },
+  "children": [
+    {
+      "type": "Text",
+      "text": "Wander Stay",
+      "textStyle": {
+        "textSize": 24,
+        "textColor": "#212121",
+        "isBold": true
+      }
+    },
+    {
+      "type": "LazyGrid",
+      "numOfRowColumn": 2,
+      "orientation": "vertical",
+      "style": {
+        "width": "max",
+        "height": 300,
+        "padding": {
+          "top": 16
+        }
+      },
+      "children": [
+        {
+          "id": "hotel",
+          "element": {
+            "type": "Card",
+            "cornerRadius": 8,
+            "style": {
+              "padding": {
+                "width": "max",
+                "right": 8
+              }
+            },
+            "child": {
+              "type": "Image",
+              "url": "https://i.imgur.com/2t1Hupy.png",
+              "altText": "Lunar new year 50% Off Banner",
+              "style": {
+                "width": "max"
+              }
+            }
+          }
+        },
+        {
+          "id": "condos",
+          "element": {
+            "type": "Card",
+            "cornerRadius": 8,
+            "style": {
+              "padding": {
+                "width": "max",
+                "right": 8
+              }
+            },
+            "child": {
+              "type": "Image",
+              "url": "https://i.imgur.com/rmuE28X.png",
+              "altText": "Lunar new year 50% Off Banner",
+              "style": {
+                "width": "max"
+              }
+            }
+          }
+        },
+        {
+          "id": "villa",
+          "element": {
+            "type": "Card",
+            "cornerRadius": 8,
+            "style": {
+              "padding": {
+                "width": "max",
+                "right": 8,
+                "top": 8
+              }
+            },
+            "child": {
+              "type": "Image",
+              "url": "https://i.imgur.com/afpQegB.png",
+              "altText": "Lunar new year 50% Off Banner",
+              "style": {
+                "width": "max"
+              }
+            }
+          }
+        },
+        {
+          "id": "unique-stays",
+          "element": {
+            "type": "Card",
+            "cornerRadius": 8,
+            "style": {
+              "padding": {
+                "width": "max",
+                "right": 8,
+                "top": 8
+              }
+            },
+            "child": {
+              "type": "Image",
+              "url": "https://i.imgur.com/CmfEgzP.png",
+              "altText": "Lunar new year 50% Off Banner",
+              "style": {
+                "width": "max"
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "type": "Text",
+      "text": "Discover deals",
+      "textStyle": {
+        "textSize": 20,
+        "textColor": "#212121",
+        "isBold": true
+      },
+      "style": {
+        "width": "max",
+        "padding": {
+          "top": 0
+        }
+      }
+    },
+    {
+      "type": "LazyList",
+      "orientation": "horizontal",
+      "style": {
+        "padding": {
+          "top": 8
+        }
+      },
+      "children": [
+        {
+          "id": "1",
+          "element": {
+            "type": "Column",
+            "style": {
+              "padding": {
+                "right": 16
+              }
+            },
+            "children": [
+              {
+                "type": "Card",
+                "cornerRadius": 8,
+                "child": {
+                  "type": "Image",
+                  "url": "https://i.imgur.com/yvZ9LRG.png",
+                  "style": {
+                    "width": 250,
+                    "height": 125
+                  }
+                }
+              },
+              {
+                "type": "Text",
+                "text": "Millennium Hilton Bangkok",
+                "textStyle": {
+                  "textSize": 16,
+                  "textColor": "#424242",
+                  "isBold": true
+                },
+                "style": {
+                  "padding": {
+                    "top": 8
+                  }
+                }
+              },
+              {
+                "type": "Text",
+                "text": "9.0 - Mostly Positive",
+                "textStyle": {
+                  "textSize": 14,
+                  "textColor": "#0B0B0B"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "id": "2",
+          "element": {
+            "type": "Column",
+            "style": {
+              "padding": {
+                "right": 16
+              }
+            },
+            "children": [
+              {
+                "type": "Card",
+                "cornerRadius": 8,
+                "child": {
+                  "type": "Image",
+                  "url": "https://i.imgur.com/9S02RLt.png",
+                  "style": {
+                    "width": 250,
+                    "height": 125
+                  }
+                }
+              },
+              {
+                "type": "Text",
+                "text": "Shangri-La Bangkok",
+                "textStyle": {
+                  "textSize": 16,
+                  "textColor": "#424242",
+                  "isBold": true
+                },
+                "style": {
+                  "padding": {
+                    "top": 8
+                  }
+                }
+              },
+              {
+                "type": "Text",
+                "text": "8.8 - Mostly Positive",
+                "textStyle": {
+                  "textSize": 14,
+                  "textColor": "#0B0B0B"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "id": "3",
+          "element": {
+            "type": "Column",
+            "style": {
+              "padding": {
+                "right": 16
+              }
+            },
+            "children": [
+              {
+                "type": "Card",
+                "cornerRadius": 8,
+                "child": {
+                  "type": "Image",
+                  "url": "https://i.imgur.com/g2CjPaT.png",
+                  "style": {
+                    "width": 250,
+                    "height": 125
+                  }
+                }
+              },
+              {
+                "type": "Text",
+                "text": "Centara Pattaya Hotel",
+                "textStyle": {
+                  "textSize": 16,
+                  "textColor": "#424242",
+                  "isBold": true
+                },
+                "style": {
+                  "padding": {
+                    "top": 8
+                  }
+                }
+              },
+              {
+                "type": "Text",
+                "text": "9.0 - Mostly Positive",
+                "textStyle": {
+                  "textSize": 14,
+                  "textColor": "#0B0B0B"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "id": "4",
+          "element": {
+            "type": "Column",
+            "children": [
+              {
+                "type": "Card",
+                "cornerRadius": 8,
+                "child": {
+                  "type": "Image",
+                  "url": "https://i.imgur.com/AZCxhfk.png",
+                  "style": {
+                    "width": 250,
+                    "height": 125
+                  }
+                }
+              },
+              {
+                "type": "Text",
+                "text": "Grande Centre Point Pattaya",
+                "textStyle": {
+                  "textSize": 16,
+                  "textColor": "#424242",
+                  "isBold": true
+                },
+                "style": {
+                  "padding": {
+                    "top": 8
+                  }
+                }
+              },
+              {
+                "type": "Text",
+                "text": "9.0 - Mostly Positive",
+                "textStyle": {
+                  "textSize": 14,
+                  "textColor": "#0B0B0B"
+                }
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "type": "Text",
+      "text": "Explore by destination",
+      "textStyle": {
+        "textSize": 20,
+        "textColor": "#212121",
+        "isBold": true
+      },
+      "style": {
+        "width": "max",
+        "padding": {
+          "top": 16
+        }
+      }
+    },
+    {
+      "type": "LazyList",
+      "orientation": "horizontal",
+      "style": {
+        "padding": {
+          "top": 8
+        }
+      },
+      "children": [
+        {
+          "id": "1",
+          "element": {
+            "type": "Column",
+            "style": {
+              "padding": {
+                "right": 16
+              }
+            },
+            "children": [
+              {
+                "type": "Card",
+                "cornerRadius": 8,
+                "child": {
+                  "type": "Image",
+                  "url": "https://i.imgur.com/0h5fKl1.png",
+                  "style": {
+                    "width": 250,
+                    "height": 125
+                  }
+                }
+              },
+              {
+                "type": "Text",
+                "text": "Phuket",
+                "textStyle": {
+                  "textSize": 16,
+                  "textColor": "#424242",
+                  "isBold": true
+                },
+                "style": {
+                  "padding": {
+                    "top": 8
+                  }
+                }
+              }
+            ]
+          }
+        },
+        {
+          "id": "2",
+          "element": {
+            "type": "Column",
+            "style": {
+              "padding": {
+                "right": 16
+              }
+            },
+            "children": [
+              {
+                "type": "Card",
+                "cornerRadius": 8,
+                "child": {
+                  "type": "Image",
+                  "url": "https://i.imgur.com/4tnsG1G.png",
+                  "style": {
+                    "width": 250,
+                    "height": 125
+                  }
+                }
+              },
+              {
+                "type": "Text",
+                "text": "Chiang Mai",
+                "textStyle": {
+                  "textSize": 16,
+                  "textColor": "#424242",
+                  "isBold": true
+                },
+                "style": {
+                  "padding": {
+                    "top": 8
+                  }
+                }
+              }
+            ]
+          }
+        },
+        {
+          "id": "3",
+          "element": {
+            "type": "Column",
+            "style": {
+              "padding": {
+                "right": 16
+              }
+            },
+            "children": [
+              {
+                "type": "Card",
+                "cornerRadius": 8,
+                "child": {
+                  "type": "Image",
+                  "url": "https://i.imgur.com/l51hKr9.png",
+                  "style": {
+                    "width": 250,
+                    "height": 125
+                  }
+                }
+              },
+              {
+                "type": "Text",
+                "text": "Ko Samui",
+                "textStyle": {
+                  "textSize": 16,
+                  "textColor": "#424242",
+                  "isBold": true
+                },
+                "style": {
+                  "padding": {
+                    "top": 8
+                  }
+                }
+              }
+            ]
+          }
+        },
+        {
+          "id": "4",
+          "element": {
+            "type": "Column",
+            "children": [
+              {
+                "type": "Card",
+                "cornerRadius": 8,
+                "child": {
+                  "type": "Image",
+                  "url": "https://i.imgur.com/fGuaRMA.png",
+                  "style": {
+                    "width": 250,
+                    "height": 125
+                  }
+                }
+              },
+              {
+                "type": "Text",
+                "text": "Ao Nang",
+                "textStyle": {
+                  "textSize": 16,
+                  "textColor": "#424242",
+                  "isBold": true
+                },
+                "style": {
+                  "padding": {
+                    "top": 8
+                  }
+                }
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}

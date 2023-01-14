@@ -1,6 +1,6 @@
 package dev.aungkyawpaing.loki.adapter
 
-import com.squareup.moshi.JsonDataException
+
 import dev.aungkyawpaing.loki.getJsonAdapter
 import dev.aungkyawpaing.loki.model.Text
 import dev.aungkyawpaing.loki.model.metadata.ElementStyle
@@ -84,11 +84,11 @@ class TextJsonAdapterTest {
         """.trimIndent()
 
             val exception = Assertions.assertThrows(
-                JsonDataException::class.java
+                IllegalArgumentException::class.java
             ) { adapter.fromJson(json) }
 
 
-            Assertions.assertEquals(exception.message, "Required property text is missing")
+            Assertions.assertEquals("Required property text is missing", exception.message)
         }
 
         @Test
@@ -101,11 +101,11 @@ class TextJsonAdapterTest {
         """.trimIndent()
 
             val exception = Assertions.assertThrows(
-                JsonDataException::class.java
+                IllegalArgumentException::class.java
             ) { adapter.fromJson(json) }
 
 
-            Assertions.assertEquals(exception.message, "Required property textStyle is missing")
+            Assertions.assertEquals("Required property textStyle is missing", exception.message)
         }
 
     }

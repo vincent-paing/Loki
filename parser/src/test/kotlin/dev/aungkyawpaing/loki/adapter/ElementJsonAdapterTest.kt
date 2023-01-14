@@ -2,7 +2,6 @@ package dev.aungkyawpaing.loki.adapter
 
 import com.squareup.moshi.JsonWriter
 import dev.aungkyawpaing.loki.model.*
-import dev.aungkyawpaing.loki.model.lazylist.LazyListJsonAdapter
 import dev.aungkyawpaing.loki.model.metadata.Orientation
 import dev.aungkyawpaing.loki.model.metadata.TextStyle
 import io.mockk.every
@@ -12,22 +11,32 @@ import org.junit.jupiter.api.*
 
 class ElementJsonAdapterTest {
 
+    val buttonJsonAdapter = mockk<ButtonJsonAdapter>(relaxed = true)
     val textJsonAdapter = mockk<TextJsonAdapter>(relaxed = true)
     val imageJsonAdapter = mockk<ImageJsonAdapter>(relaxed = true)
     val rowJsonAdapter = mockk<RowJsonAdapter>(relaxed = true)
     val columnJsonAdapter = mockk<ColumnJsonAdapter>(relaxed = true)
     val cardJsonAdapter = mockk<CardJsonAdapter>(relaxed = true)
     val lazyListJsonAdapter = mockk<LazyListJsonAdapter>(relaxed = true)
+    val lazyGridJsonAdapter = mockk<LazyGridJsonAdapter>(relaxed = true)
     val adapter =
         ElementJsonAdapter(
+            buttonJsonAdapter,
             textJsonAdapter,
             imageJsonAdapter,
             rowJsonAdapter,
             columnJsonAdapter,
             cardJsonAdapter,
-            lazyListJsonAdapter
+            lazyListJsonAdapter,
+            lazyGridJsonAdapter
         )
 
+    val button = Button(
+        text = "some-text",
+        textStyle = TextStyle(textSize = 12),
+        buttonStyle = ButtonStyle.FILLED,
+        color = "#FFFFFF"
+    )
     val text = Text(
         text = "", textStyle = TextStyle(textSize = 0, isBold = false), style = null
     )
@@ -41,21 +50,30 @@ class ElementJsonAdapterTest {
         children = emptyList(),
     )
     val card = Card(
-        children = emptyList(),
+        child = Text(
+            text = "", textStyle = TextStyle(textSize = 0, isBold = false), style = null
+        )
     )
     val lazyList = LazyList(
+        orientation = Orientation.HORIZONTAL,
+        children = emptyList()
+    )
+    val lazyGrid = LazyGrid(
+        numOfRowColumn = 2,
         orientation = Orientation.HORIZONTAL,
         children = emptyList()
     )
 
     @BeforeEach
     fun setUp() {
+        every { buttonJsonAdapter.fromJsonValue(any()) } returns button
         every { textJsonAdapter.fromJsonValue(any()) } returns text
         every { imageJsonAdapter.fromJsonValue(any()) } returns image
         every { rowJsonAdapter.fromJsonValue(any()) } returns row
         every { columnJsonAdapter.fromJsonValue(any()) } returns column
         every { cardJsonAdapter.fromJsonValue(any()) } returns card
         every { lazyListJsonAdapter.fromJsonValue(any()) } returns lazyList
+        every { lazyGridJsonAdapter.fromJsonValue(any()) } returns lazyGrid
     }
 
     @Nested
@@ -85,6 +103,19 @@ class ElementJsonAdapterTest {
             val actual = adapter.fromJson(json)
 
             Assertions.assertEquals(image, actual)
+        }
+
+        @Test
+        fun `reads Button given a button element`() {
+            val json = """
+            {
+              "type": "Button"
+            }
+        """.trimIndent()
+
+            val actual = adapter.fromJson(json)
+
+            Assertions.assertEquals(button, actual)
         }
 
         @Test
@@ -139,6 +170,19 @@ class ElementJsonAdapterTest {
             Assertions.assertEquals(lazyList, actual)
         }
 
+        @Test
+        fun `reads LazyGrid given a lazy grid element`() {
+            val json = """
+            {
+              "type": "LazyGrid"
+            }
+        """.trimIndent()
+
+            val actual = adapter.fromJson(json)
+
+            Assertions.assertEquals(lazyGrid, actual)
+        }
+
     }
 
     @Nested
@@ -160,6 +204,15 @@ class ElementJsonAdapterTest {
 
             verify {
                 imageJsonAdapter.toJson(any<JsonWriter>(), any())
+            }
+        }
+
+        @Test
+        fun `write a button element given Button`() {
+            adapter.toJson(button)
+
+            verify {
+                buttonJsonAdapter.toJson(any<JsonWriter>(), any())
             }
         }
 
@@ -196,6 +249,15 @@ class ElementJsonAdapterTest {
 
             verify {
                 lazyListJsonAdapter.toJson(any<JsonWriter>(), any())
+            }
+        }
+
+        @Test
+        fun `write a lazy list grid given LazyGrid`() {
+            adapter.toJson(lazyGrid)
+
+            verify {
+                lazyGridJsonAdapter.toJson(any<JsonWriter>(), any())
             }
         }
     }
